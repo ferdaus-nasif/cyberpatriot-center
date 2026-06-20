@@ -225,6 +225,66 @@ html {
     transform: translateY(0);
   }
 }
+    /* Mobile Toggle Button Styling Hidden on Desktop */
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: #ffffff;
+      font-size: 2rem;
+      cursor: pointer;
+    }
+
+    /* Fixed Sidebar Menu Architecture */
+    .sidebar-nav {
+      position: fixed;
+      top: 0;
+      right: -280px; /* Hidden offscreen by default */
+      width: 280px;
+      height: 100vh;
+      background-color: #131a26;
+      border-left: 1px solid #1e293b;
+      padding: 2.5rem;
+      z-index: 2000;
+      /* Smooth slide transition */
+      transition: right 0.3s cubic-bezier(0.16, 1, 0.3, 1); 
+    }
+
+    /* Active helper state to pop slide sidebar in */
+    .sidebar-nav.active {
+      right: 0;
+    }
+
+    .close-btn {
+      background: none;
+      border: none;
+      color: #ffffff;
+      font-size: 1.5rem;
+      cursor: pointer;
+      float: right;
+      margin-bottom: 2rem;
+    }
+
+    .sidebar-nav ul {
+      list-style: none;
+      margin-top: 4rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .sidebar-nav a {
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    /* Responsive media settings for Mobile screens */
+    @media (max-width: 900px) {
+      .desktop-nav { display: none !important; } /* Replaces old nav hider line */
+      .menu-toggle { display: block; } /* Displays hamburger bars on phones */
+    }
 
   </style>
 </head>
@@ -245,7 +305,22 @@ html {
         <li><a href="resources.html">Resources</a></li>
       </ul>
     </nav>
+
+    <!-- Mobile Menu Toggle Button -->
+     <button class="menu-toggle" id="menuToggle" aria-label="Open Menu">☰</button>
   </header>
+
+   <!-- Sliding Sidebar for Phones -->
+  <div class="sidebar-nav" id="sidebarMenu">
+    <button class="close-btn" id="closeMenu">✕</button>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="onboarding.html">Onboarding</a></li>
+      <li><a href="peshrow.html">Peshrow</a></li>
+      <li><a href="archives.html">Archives</a></li>
+      <li><a href="resources.html">Resources</a></li>
+    </ul>
+  </div>
 
   <section class="hero">
     <h1>
@@ -287,6 +362,20 @@ html {
         document.getElementById("live-countdown").innerHTML = "<span class='lbl'>Round 1 is Live</span>";
       }
     }, 1000);
+
+        // Sidebar open and close interaction engines
+    const menuToggle = document.getElementById('menuToggle');
+    const closeMenu = document.getElementById('closeMenu');
+    const sidebarMenu = document.getElementById('sidebarMenu');
+
+    menuToggle.addEventListener('click', () => {
+      sidebarMenu.classList.add('active');
+    });
+
+    closeMenu.addEventListener('click', () => {
+      sidebarMenu.classList.remove('active');
+    });
+
   </script>
 
 </body>
