@@ -10,4 +10,4 @@ Welcome to **CyberPatriot Center**, a website for all info about CyberPatriot at
 **Vercel**: https://cyberpatriotcenter.vercel.app
 
 ---
-**NOT AFFILIATED WITH CYBERPATRIOT OR AFA**
+# **NOT AFFILIATED WITH CYBERPATRIOT OR AFA**
