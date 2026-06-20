@@ -67,13 +67,18 @@
     }
 
     .brand {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      font-weight: 400;
-      font-size: 1.1rem;
-      letter-spacing: -0.02em;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: 'UnboundedSemiBold', sans-serif !important;
+    font-weight: 600 !important;
+    font-size: 1.1rem;
+    letter-spacing: -0.02em;
+    /* FIX: Forces the logo link to stay clean white and matches your menu style */
+    color: #ffffff !important; 
+    text-decoration: none !important;
     }
+
 
     .brand-logo {
       width: 32px; 
@@ -270,15 +275,17 @@ nav a:hover {
 
   <!-- Navigation -->
   <header>
-    <div class="brand">
+    <!-- Wrapped the brand content inside a clickable link pointing straight to home -->
+    <a href="index.html" class="brand" style="text-decoration: none;">
       <img src="logo.png" alt="Logo" class="brand-logo">
       CyberPatriot Center
-    </div>
+    </a>
+    
     <nav class="desktop-nav">
       <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="onboarding.html">New Team Onboarding</a></li>
-        <li><a href="peshrow.html" style="color: #00a2ff;">Peshrow's Page</a></li>
+        <li><a href="peshrow.html">Peshrow's Page</a></li>
         <li><a href="archives.html">Scores Archives</a></li>
         <li><a href="resources.html">Resources</a></li>
       </ul>
@@ -291,8 +298,8 @@ nav a:hover {
     <button class="close-btn" id="closeMenu">✕</button>
     <ul>
       <li><a href="index.html">Home</a></li>
-      <li><a href="onboarding.html">Onboarding</a></li>
-      <li><a href="peshrow.html" style="color: #00a2ff;">Peshrow</a></li>
+      <li><a href="onboarding.html">New Team Onboarding</a></li>
+      <li><a href="peshrow.html" style="color: #00a2ff;">Peshrow's Page</a></li>
       <li><a href="archives.html">Archives</a></li>
       <li><a href="resources.html">Resources</a></li>
     </ul>

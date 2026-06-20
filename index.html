@@ -71,14 +71,18 @@ html {
     }
 
     .brand {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      font-family: 'UnboundedNormal', sans-serif;
-      font-weight: 400;
-      font-size: 1.1rem;
-      letter-spacing: -0.02em;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: 'UnboundedSemiBold', sans-serif !important;
+    font-weight: 600 !important;
+    font-size: 1.1rem;
+    letter-spacing: -0.02em;
+    /* FIX: Forces the logo link to stay clean white and matches your menu style */
+    color: #ffffff !important; 
+    text-decoration: none !important;
     }
+
 
     .brand-logo {
       width: 32px;
@@ -326,13 +330,14 @@ nav a:hover {
 </head>
 <body>
 
-   <header>
-    <div class="brand">
-      <!-- Changed from a generic div to a live image tag linking to your logo -->
-      <img src="logo.png" alt="CyberPatriot Logo" class="brand-logo">
+  <header>
+    <!-- Wrapped the brand content inside a clickable link pointing straight to home -->
+    <a href="index.html" class="brand" style="text-decoration: none;">
+      <img src="logo.png" alt="Logo" class="brand-logo">
       CyberPatriot Center
-    </div>
-    <nav>
+    </a>
+    
+    <nav class="desktop-nav">
       <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="onboarding.html">New Team Onboarding</a></li>
@@ -341,18 +346,17 @@ nav a:hover {
         <li><a href="resources.html">Resources</a></li>
       </ul>
     </nav>
-
-    <!-- Mobile Menu Toggle Button -->
-     <button class="menu-toggle" id="menuToggle" aria-label="Open Menu">☰</button>
+    <button class="menu-toggle" id="menuToggle" aria-label="Open Menu">☰</button>
   </header>
+
 
    <!-- Sliding Sidebar for Phones -->
   <div class="sidebar-nav" id="sidebarMenu">
     <button class="close-btn" id="closeMenu">✕</button>
     <ul>
       <li><a href="index.html">Home</a></li>
-      <li><a href="onboarding.html">Onboarding</a></li>
-      <li><a href="peshrow.html">Peshrow</a></li>
+      <li><a href="onboarding.html">New Team Onboarding</a></li>
+      <li><a href="peshrow.html">Peshrow's Page</a></li>
       <li><a href="archives.html">Archives</a></li>
       <li><a href="resources.html">Resources</a></li>
     </ul>
