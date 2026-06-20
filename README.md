@@ -8,4 +8,4 @@ Welcome to **CyberPatriot Center**, a website for all info about CyberPatriot at
 **Netlify**: https://cyberpatriotcenter.netlify.app
 
 **Vercel**: https://cyberpatriotcenter.vercel.app
----
+
