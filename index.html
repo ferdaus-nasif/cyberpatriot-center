@@ -286,6 +286,26 @@ html {
       .menu-toggle { display: block; } /* Displays hamburger bars on phones */
     }
 
+    /* Container section for CP19 Schedule */
+.info-image-section {
+  background-color: #0d1117; /* Matches your body dark background */
+  padding: 4rem 2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Controls the scale and responsiveness of the image */
+.info-graphic {
+  max-width: 100%;
+  width: 800px; /* Adjust this number to make the image wider or narrower */
+  height: auto;
+  border-radius: 12px; /* Smooths out the image corners */
+  border: 1px solid #1e293b; /* Subtle dark border border framing */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4); /* Elevates it off the background */
+}
+
   </style>
 </head>
 <body>
@@ -337,6 +357,11 @@ html {
   <section class="countdown-section">
     <div class="countdown-title">COUNTDOWN TO CYBERPATRIOT ROUND 1</div>
     <div class="timer-container" id="live-countdown">---</div>
+  </section>
+
+  <!-- NEW: Schedule Image Section -->
+  <section class="info-image-section">
+    <img src="CP19-COMPETITION-SCHEDULE-HERO.png" alt="CyberPatriot 19 Schedule" class="info-graphic">
   </section>
 
   <script>
