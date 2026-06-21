@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CyberPatriot Center</title>
-
+  <title>New Team Onboarding</title>
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -14,13 +13,12 @@
     <div class="loupe-viewport"></div>
   </div>
 
-
   <header>
     <a href="index.html" class="brand" style="text-decoration: none;">
       <img src="logo.png" alt="Logo" class="brand-logo">
       CyberPatriot Center
     </a>
-    
+
     <nav class="desktop-nav">
       <ul>
         <li><a href="index.html">Home</a></li>
@@ -33,64 +31,50 @@
     <button class="menu-toggle" id="menuToggle" aria-label="Open Menu">☰</button>
   </header>
 
-
-   <!-- Sliding Sidebar for mobile -->
   <div class="sidebar-nav" id="sidebarMenu">
     <button class="close-btn" id="closeMenu">✕</button>
     <ul>
       <li><a href="index.html">Home</a></li>
-      <li><a href="onboarding.html">New Team Onboarding</a></li>
+      <li><a href="onboarding.html" style="color: #00a2ff;">New Team Onboarding</a></li>
       <li><a href="peshrow.html">Peshrow's Page</a></li>
       <li><a href="archives.html">Archives</a></li>
       <li><a href="resources.html">Resources</a></li>
     </ul>
   </div>
 
+  <!-- WELCOME CONTENT -->
   <section class="hero">
     <h1>
-      <span>CyberPatriot</span>
-      <span>Center</span>
+      <span>New Team</span>
+      <span>Onboarding</span>
     </h1>
-    <div class="arrow-down" id="scrollDown">⌃</div>
+    <div class="arrow-down" id="scrollDown">^</div>
   </section>
 
   <div class="announcement-bar">
-    CYBERPATRIOT 19 (UNDER CONSTRUCTION)
+    WELCOME TANUJ AND GREESHMANTH 👋
   </div>
 
-  <section class="countdown-section">
-    <div class="countdown-title">COUNTDOWN TO CYBERPATRIOT ROUND 1 (OCT. 24, 2026)</div>
-    <div class="timer-container" id="live-countdown">---</div>
+  <section class="content-section">
+    <div class="tribute-text">Very excited to have you on the team. As you know, Peshrow has graduated so we needed a replacement for him. But we also wanted a replacement for Laroussi, because, well, Laroussi is Laroussi. So, we have recruited you two to join us for CyberPatriot 19 in the next school year. I believe you two are great additions to our team. We already have Adi and Rohan with us, so I think you guys can add some flare to our team. Nonetheless, I believe this CyberPatriot season will be a great one. In the meantime, you can check out the website and explore some pages. This website is for all the CyberPatriot information for our team. All the scores and everything else will be posted here to view for ourselves. For now, I'll keep updating this with more information as it comes.</div>
+    <div class="tribute-text">-Nasif Ferdaus</div>
   </section>
 
-  <!-- Schedule Image Section -->
-  <section class="info-image-section">
-    <img src="CP19-COMPETITION-SCHEDULE-HERO.png" alt="CyberPatriot 19 Schedule" class="info-graphic">
-  </section>
+<section class="current-lineup">
+  <h2>CURRENT LINEUP</h2>
+  <ul>
+    <li>Nasif Ferdaus (Team Leader)</li>
+    <li>Aditya Godugu</li>
+    <li>Rohan Chilukuri</li>
+  </ul>
+</section>
 
   <script>
-    const targetDate = new Date("2026-10-24T09:00:00").getTime();
-
-    const x = setInterval(function() {
-      const now = new Date().getTime();
-      const distance = targetDate - now;
-
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-      document.getElementById("live-countdown").innerHTML = 
-        `<span class="num">${days}</span><span class="lbl">d</span>` +
-        `<span class="num">${hours}</span><span class="lbl">h</span>` +
-        `<span class="num">${minutes}</span><span class="lbl">m</span>` +
-        `<span class="num">${seconds}</span><span class="lbl">s</span>`;
-
-      if (distance < 0) {
-        clearInterval(x);
-        document.getElementById("live-countdown").innerHTML = "<span class='lbl'>Round 1 is Live</span>";
-      }
-    }, 1000);
+    // Scroll down on carrot click
+    const scrollDown = document.getElementById('scrollDown');
+    scrollDown.addEventListener('click', () => {
+      window.scrollBy({ top: window.innerHeight * 0.8, behavior: 'smooth' });
+    });
 
     // Sidebar open and close
     const menuToggle = document.getElementById('menuToggle');
@@ -103,12 +87,6 @@
 
     closeMenu.addEventListener('click', () => {
       sidebarMenu.classList.remove('active');
-    });
-
-    // Scroll down on carrot click
-    const scrollDown = document.getElementById('scrollDown');
-    scrollDown.addEventListener('click', () => {
-      window.scrollBy({ top: window.innerHeight * 0.8, behavior: 'smooth' });
     });
 
     const mainCursor = document.getElementById('cursor');
@@ -124,8 +102,6 @@
       interactiveItem.addEventListener('mouseenter', () => mainCursor.classList.add('hovering'));
       interactiveItem.addEventListener('mouseleave', () => mainCursor.classList.remove('hovering'));
     });
-
   </script>
-
 </body>
 </html>
