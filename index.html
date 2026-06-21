@@ -318,10 +318,84 @@ nav a:hover {
   border: 1px solid #1e293b;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
 }
+/* 1. Universal custom pointer rule setup */
+html, body, a, button, input {
+  cursor: none !important;
+}
+
+:root {
+  --bg: #0d1117;
+  --text: #ffffff;
+  --body: 'UnboundedNormal', sans-serif;
+}
+
+/* 2. Your core premium lens glass frame layout */
+.lens-cursor { 
+  position: fixed; 
+  pointer-events: none; 
+  z-index: 99999; 
+  width: 44px; 
+  height: 44px; 
+  border-radius: 50%; 
+  background: transparent; 
+  border: 2.5px solid rgba(255, 255, 255, 0.32); 
+  box-shadow: inset 0 -3px 6px rgba(0, 0, 0, 0.15), inset 0 0 8px 2px rgba(255, 255, 255, 0.04), 0 0 0 1px rgba(255, 255, 255, 0.1), 0 6px 20px rgba(0, 0, 0, 0.4), 0 2px 6px rgba(0, 0, 0, 0.25), 0 0 12px rgba(94, 184, 255, 0.04); 
+  transform: translate(-50%, -50%); 
+  /* Ultra-smooth layout transitions for scale adjustments */
+  transition: width 0.35s cubic-bezier(0.22, 1, 0.36, 1), height 0.35s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.3s, box-shadow 0.3s; 
+} 
+
+/* 3. FIX: Viewport uses backdrop filters to simulate lens depth magnification */
+.loupe-viewport { 
+  position: absolute; 
+  inset: 0; 
+  border-radius: 50%; 
+  overflow: hidden; 
+  z-index: 0;
+  /* Scales anything beneath the ring to 1.12x size without breaking page links */
+  backdrop-filter: scale(1.12) brightness(1.05);
+  -webkit-backdrop-filter: scale(1.12) brightness(1.05);
+} 
+
+/* Bottom droplet light reflection caustic asset layer */
+.lens-cursor::after { 
+  content: ''; 
+  position: absolute; 
+  bottom: -5px; 
+  left: 50%; 
+  transform: translateX(-50%); 
+  width: 50%; 
+  height: 5px; 
+  border-radius: 50%; 
+  background: radial-gradient(ellipse, rgba(94, 184, 255, 0.12) 0%, transparent 100%); 
+  pointer-events: none; 
+  z-index: 3; 
+} 
+
+/* Hover state panel link expand profiles */
+.lens-cursor.hovering { 
+  width: 60px; 
+  height: 60px; 
+  border-width: 3px; 
+  border-color: rgba(255, 255, 255, 0.42); 
+  box-shadow: inset 0 -4px 10px rgba(0, 0, 0, 0.18), inset 0 0 10px 3px rgba(255, 255, 255, 0.05), 0 0 0 1.5px rgba(255, 255, 255, 0.14), 0 8px 28px rgba(0, 0, 0, 0.45), 0 3px 8px rgba(0, 0, 0, 0.3), 0 0 18px rgba(94, 184, 255, 0.06); 
+} 
+
+a, button, .btn-glass, .jelly-dot, .proj-card { cursor: none !important; } 
+
+@media (hover: none) { 
+  .lens-cursor { display: none; } 
+  body, a, button, .btn-glass, .jelly-dot, .proj-card { cursor: auto !important; } 
+}
 
   </style>
 </head>
 <body>
+  <!-- Complete, lightweight lens glass structure -->
+  <div class="lens-cursor" id="cursor" aria-hidden="true">
+    <div class="loupe-viewport"></div>
+  </div>
+
 
   <header>
     <a href="index.html" class="brand" style="text-decoration: none;">
@@ -411,6 +485,20 @@ nav a:hover {
 
     closeMenu.addEventListener('click', () => {
       sidebarMenu.classList.remove('active');
+    });
+    
+    const mainCursor = document.getElementById('cursor');
+
+    // Slides the lens shell layout perfectly alongside your raw screen mouse input values
+    window.addEventListener('mousemove', (e) => {
+      mainCursor.style.left = `${e.clientX}px`;
+      mainCursor.style.top = `${e.clientY}px`;
+    });
+
+    // Manages link hover expansion states cleanly
+    document.querySelectorAll('a, button').forEach(interactiveItem => {
+      interactiveItem.addEventListener('mouseenter', () => mainCursor.classList.add('hovering'));
+      interactiveItem.addEventListener('mouseleave', () => mainCursor.classList.remove('hovering'));
     });
 
   </script>
