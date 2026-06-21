@@ -10,5 +10,6 @@ Welcome to **CyberPatriot Center**, a website for all info about CyberPatriot at
 **▲ Vercel**: https://cyberpatriotcenter.vercel.app
 
 **☁️ Cloudflare**: https://cyberpatriotcenter.ferdausnasif.workers.dev/
+
 ---
 # **NOT AFFILIATED WITH CYBERPATRIOT OR AFA**
