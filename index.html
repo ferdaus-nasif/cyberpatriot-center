@@ -9,6 +9,17 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <!-- Background Music -->
+  <audio id="bgMusic" loop>
+    <source src="aquatic-ambience.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Audio Controls -->
+  <div class="audio-controls">
+    <button class="audio-btn" id="playPauseBtn" title="Play/Pause">▶ Play</button>
+    <button class="audio-btn" id="muteBtn" title="Mute/Unmute">🔊 Unmute</button>
+  </div>
+
   <!-- Complete, lightweight lens glass structure -->
   <div class="lens-cursor" id="cursor" aria-hidden="true">
     <div class="loupe-viewport"></div>
@@ -124,6 +135,73 @@
       interactiveItem.addEventListener('mouseenter', () => mainCursor.classList.add('hovering'));
       interactiveItem.addEventListener('mouseleave', () => mainCursor.classList.remove('hovering'));
     });
+
+    // Unmute background music on first user interaction
+    const bgMusic = document.getElementById('bgMusic');
+    const unmuteAudio = () => {
+      bgMusic.muted = false;
+      document.removeEventListener('click', unmuteAudio);
+      document.removeEventListener('keydown', unmuteAudio);
+    };
+    document.addEventListener('click', unmuteAudio);
+    document.addEventListener('keydown', unmuteAudio);
+
+    // Audio control buttons
+    const playPauseBtn = document.getElementById('playPauseBtn');
+    const muteBtn = document.getElementById('muteBtn');
+
+    playPauseBtn.addEventListener('click', () => {
+      if (bgMusic.paused) {
+        bgMusic.play();
+        playPauseBtn.textContent = '⏸ Pause';
+        bgMusic.muted = false;
+      } else {
+        bgMusic.pause();
+        playPauseBtn.textContent = '▶ Play';
+      }
+    });
+
+    muteBtn.addEventListener('click', () => {
+      bgMusic.muted = !bgMusic.muted;
+      muteBtn.textContent = bgMusic.muted ? '🔇 Muted' : '🔊 Unmute';
+      muteBtn.classList.toggle('active', bgMusic.muted);
+    });
+
+    // Persist audio playback state across page navigation
+    const saveAudioState = () => {
+      sessionStorage.setItem('audioTime', bgMusic.currentTime);
+      sessionStorage.setItem('audioMuted', bgMusic.muted);
+      sessionStorage.setItem('audioPaused', bgMusic.paused);
+    };
+
+    const restoreAudioState = () => {
+      const savedTime = sessionStorage.getItem('audioTime');
+      const savedMuted = sessionStorage.getItem('audioMuted');
+      const savedPaused = sessionStorage.getItem('audioPaused');
+      
+      // Only restore if we have saved state (returning from another page)
+      if (savedTime !== null) {
+        bgMusic.currentTime = parseFloat(savedTime);
+        bgMusic.muted = savedMuted === 'true';
+        
+        // Only play if it was playing before
+        if (savedPaused === 'false') {
+          bgMusic.play().catch(err => console.log('Autoplay prevented:', err));
+          playPauseBtn.textContent = '⏸ Pause';
+        } else {
+          bgMusic.pause();
+          playPauseBtn.textContent = '▶ Play';
+        }
+        muteBtn.textContent = bgMusic.muted ? '🔇 Muted' : '🔊 Unmute';
+        muteBtn.classList.toggle('active', bgMusic.muted);
+      }
+    };
+
+    // Restore audio state immediately and on load
+    restoreAudioState();
+    window.addEventListener('load', restoreAudioState);
+    window.addEventListener('beforeunload', saveAudioState);
+    bgMusic.addEventListener('timeupdate', saveAudioState);
 
   </script>
 

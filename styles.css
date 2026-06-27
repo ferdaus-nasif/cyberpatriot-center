@@ -426,6 +426,97 @@ a, button, .btn-glass, .jelly-dot, .proj-card, .arrow-down {
   60% { transform: translateY(-5px); }
 }
 
+/* Windows Checklist Section */
+.windows-checklist-section {
+  background-color: #000000;
+  padding: 4rem 10%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 3rem;
+}
+
+.checklist-content {
+  flex: 1;
+}
+
+.windows-title {
+  font-family: 'UnboundedSemiBold', sans-serif !important;
+  font-weight: 600;
+  font-size: 2.8rem;
+  letter-spacing: 0.02em;
+  color: #ffffff;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.windows-logo {
+  width: 300px;
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+/* Checklist Content Section */
+.checklist-content-section {
+  background-color: #000000;
+  padding: 4rem 10%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: left;
+  min-height: 100vh;
+}
+
+.checklist-items {
+  max-width: 900px;
+  width: 100%;
+}
+
+.checklist-warning {
+  font-family: 'UnboundedSemiBold', sans-serif !important;
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: #ff6b6b;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background-color: rgba(255, 107, 107, 0.1);
+  border-left: 4px solid #ff6b6b;
+  border-radius: 4px;
+}
+
+.checklist-list {
+  list-style-type: decimal;
+  color: #ffffff;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  padding-left: 2rem;
+}
+
+.checklist-list li {
+  margin-bottom: 1.5rem;
+  font-family: var(--body);
+}
+
+.checklist-list strong {
+  color: #00a2ff;
+  font-family: 'UnboundedSemiBold', sans-serif !important;
+}
+
+.checklist-sublist {
+  list-style-type: lower-alpha;
+  margin-top: 0.8rem;
+  margin-left: 2rem;
+  color: #cccccc;
+}
+
+.checklist-sublist li {
+  margin-bottom: 0.8rem;
+}
+
 /* Append layout updates to your existing max-width: 900px block if desired, 
    or keep them scoped here for easier categorization */
 @media (max-width: 900px) {
@@ -473,4 +564,4 @@ a, button, .btn-glass, .jelly-dot, .proj-card, .arrow-down {
     padding: 4rem 2rem;
     text-align: left;
     display: flex;
-   }
+}

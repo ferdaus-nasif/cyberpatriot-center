@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Windows Checklist - CyberPatriot Center</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Complete, lightweight lens glass structure -->
+  <div class="lens-cursor" id="cursor" aria-hidden="true">
+    <div class="loupe-viewport"></div>
+  </div>
+
+  <header>
+    <a href="index.html" class="brand" style="text-decoration: none;">
+      <img src="logo.png" alt="Logo" class="brand-logo">
+      CyberPatriot Center
+    </a>
+
+    <nav class="desktop-nav">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="onboarding.html">New Team Onboarding</a></li>
+        <li><a href="peshrow.html">Peshrow's Page</a></li>
+        <li><a href="archives.html">Scores Archives</a></li>
+        <li><a href="resources.html">Resources</a></li>
+      </ul>
+    </nav>
+    <button class="menu-toggle" id="menuToggle" aria-label="Open Menu">☰</button>
+  </header>
+
+  <div class="sidebar-nav" id="sidebarMenu">
+    <button class="close-btn" id="closeMenu">✕</button>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="onboarding.html">New Team Onboarding</a></li>
+      <li><a href="peshrow.html">Peshrow's Page</a></li>
+      <li><a href="archives.html">Archives</a></li>
+      <li><a href="resources.html">Resources</a></li>
+    </ul>
+  </div>
+
+  <!-- WINDOWS CHECKLIST CONTENT -->
+  <section class="hero">
+    <h1>
+      <span>Windows Checklist (Under Construction)</span>
+    </h1>
+  </section>
+
+  <section class="checklist-content-section">
+    <div class="checklist-items">
+      <p class="checklist-warning"><strong>DO NOT PROCEED WITHOUT INVESTIGATING THE FORENSICS QUESTIONS AND THE README FILE.</strong></p>
+      
+      <ol class="checklist-list">
+        <li><strong>Windows Updates 🛠️</strong>
+          <ol class="checklist-sublist">
+            <li>Just checking updates and updating it.</li>
+            <li>In harder levels they will make it harder to update. They will mess with the registry and disable updates.</li>
+          </ol>
+        </li>
+        
+        <li><strong>Firewall Settings 🔥🧱</strong>
+          <ol class="checklist-sublist">
+            <li>Search up Windows Firewall</li>
+            <li>Make sure it's on.</li>
+            <li>If any apps need permissions for it then you may enable it.</li>
+          </ol>
+        </li>
+        
+        <li><strong>Local Security Policies 🔒</strong>
+          <ol class="checklist-sublist">
+            <li>Type in secpol (aka Local Security Policies)</li>
+            <li>Open Account Policies → Password Policy.</li>
+            <li>Change Enforce Password History to 7</li>
+            <li>Set Maximum Password Age to 99 days</li>
+            <li>Set Minimum Password Age to 15 days</li>
+            <li>Set Minimum Password length to 10 Characters</li>
+            <li>Make sure to enable "Password must meet complexity requirements"</li>
+            <li>Head to → Account Lockout Policy</li>
+            <li>Set Account Lockout Threshold to 6</li>
+            <li>Set Account Lockout Duration to 0</li>
+            <li>Reset account lockout counter after 15</li>
+            <li>Go to Local Policies → Audit Policy & set to record every type of audit with both success and failure</li>
+          </ol>
+        </li>
+        
+        <li><strong>Remote Desktop 🖥️</strong>
+          <ol class="checklist-sublist">
+            <li>Go to Settings → 🔍 Remote Desktop Settings</li>
+            <li>If nothing is mentioned Disable “RD”</li>
+          </ol>
+        </li>
+        
+        <li><strong>Other Users 🧑</strong>
+          <ol class="checklist-sublist">
+            <li>Change passwords of weak users (There will ALWAYS be one)</li>
+            <li>Remove Admin Perms from user that was given the wrong role.</li>
+          </ol>
+        </li>
+        
+        <li><strong>Quick Rapid Fire Things 🔥</strong>
+          <ol class="checklist-sublist">
+            <li>Run a virus scan</li>
+            <li>Check for Protection Updates</li>
+          </ol>
+        </li>
+        
+        <li><strong>Virus & Threat Protection 🛡️</strong>
+          <ol class="checklist-sublist">
+            <li>In App & Browser Protection change the settings below</li>
+            <li>Set Check apps and files to warn (if not)</li>
+            <li>And review other settings that are wrong and need to be fixed.</li>
+            <li>Make sure in Virus & Threat Protection settings are set to be protected/enabled and working</li>
+          </ol>
+        </li>
+        
+        <li><strong>Install Important Programs 📲</strong>
+          <ol class="checklist-sublist">
+            <li>Install the latest stable edition of Notepad++</li>
+            <li>If Firefox is not installed then install it</li>
+          </ol>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <script>
+    // Sidebar open and close
+    const menuToggle = document.getElementById('menuToggle');
+    const closeMenu = document.getElementById('closeMenu');
+    const sidebarMenu = document.getElementById('sidebarMenu');
+
+    menuToggle.addEventListener('click', () => {
+      sidebarMenu.classList.add('active');
+    });
+
+    closeMenu.addEventListener('click', () => {
+      sidebarMenu.classList.remove('active');
+    });
+
+    const mainCursor = document.getElementById('cursor');
+
+    // Slides the lens shell layout perfectly alongside your raw screen mouse input values
+    window.addEventListener('mousemove', (e) => {
+      mainCursor.style.left = `${e.clientX}px`;
+      mainCursor.style.top = `${e.clientY}px`;
+    });
+
+    // Manages link hover expansion states cleanly
+document.querySelectorAll('a, button, .arrow-down').forEach(interactiveItem => {
+  interactiveItem.addEventListener('mouseenter', () => mainCursor.classList.add('hovering'));
+  interactiveItem.addEventListener('mouseleave', () => mainCursor.classList.remove('hovering'));
+});
+  </script>
+</body>
+</html>

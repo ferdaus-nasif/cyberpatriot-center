@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resources - CyberPatriot Center</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Complete, lightweight lens glass structure -->
+  <div class="lens-cursor" id="cursor" aria-hidden="true">
+    <div class="loupe-viewport"></div>
+  </div>
+
+  <header>
+    <a href="index.html" class="brand" style="text-decoration: none;">
+      <img src="logo.png" alt="Logo" class="brand-logo">
+      CyberPatriot Center
+    </a>
+
+    <nav class="desktop-nav">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="onboarding.html">New Team Onboarding</a></li>
+        <li><a href="peshrow.html">Peshrow's Page</a></li>
+        <li><a href="archives.html">Scores Archives</a></li>
+        <li><a href="resources.html">Resources</a></li>
+      </ul>
+    </nav>
+    <button class="menu-toggle" id="menuToggle" aria-label="Open Menu">☰</button>
+  </header>
+
+  <div class="sidebar-nav" id="sidebarMenu">
+    <button class="close-btn" id="closeMenu">✕</button>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="onboarding.html">New Team Onboarding</a></li>
+      <li><a href="peshrow.html">Peshrow's Page</a></li>
+      <li><a href="archives.html">Archives</a></li>
+      <li><a href="resources.html" style="color: #00a2ff;">Resources</a></li>
+    </ul>
+  </div>
+
+  <!-- RESOURCES CONTENT -->
+  <section class="hero">
+    <h1>
+      <span>Resources</span>
+    </h1>
+  </section>
+
+  <section class="content-section">
+    <p style="max-width: 900px; font-size: 1.1rem; line-height: 1.8;">Welcome to the Resources page. Here are some valuable resources and links.</p>
+  </section>
+
+  <section class="windows-checklist-section">
+    <div class="checklist-content">
+      <a href="windows.html" style="text-decoration: none;">
+        <h2 class="windows-title">Windows Checklist</h2>
+      </a>
+    </div>
+    <img src="windows.png" alt="Windows Logo" class="windows-logo">
+  </section>
+
+  <script>
+    // Sidebar open and close
+    const menuToggle = document.getElementById('menuToggle');
+    const closeMenu = document.getElementById('closeMenu');
+    const sidebarMenu = document.getElementById('sidebarMenu');
+
+    menuToggle.addEventListener('click', () => {
+      sidebarMenu.classList.add('active');
+    });
+
+    closeMenu.addEventListener('click', () => {
+      sidebarMenu.classList.remove('active');
+    });
+
+    const mainCursor = document.getElementById('cursor');
+
+    // Slides the lens shell layout perfectly alongside your raw screen mouse input values
+    window.addEventListener('mousemove', (e) => {
+      mainCursor.style.left = `${e.clientX}px`;
+      mainCursor.style.top = `${e.clientY}px`;
+    });
+
+    // Manages link hover expansion states cleanly
+    document.querySelectorAll('a, button, .arrow-down').forEach(interactiveItem => {
+      interactiveItem.addEventListener('mouseenter', () => mainCursor.classList.add('hovering'));
+      interactiveItem.addEventListener('mouseleave', () => mainCursor.classList.remove('hovering'));
+    });
+  </script>
+</body>
+</html>
