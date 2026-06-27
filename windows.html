@@ -55,74 +55,164 @@
       <p class="checklist-warning"><strong>DO NOT PROCEED WITHOUT INVESTIGATING THE FORENSICS QUESTIONS AND THE README FILE.</strong></p>
       
       <ol class="checklist-list">
-        <li><strong>Windows Updates 🛠️</strong>
+        <li><strong>Windows Update</strong>
           <ol class="checklist-sublist">
-            <li>Just checking updates and updating it.</li>
-            <li>In harder levels they will make it harder to update. They will mess with the registry and disable updates.</li>
+            <li>Install all updates.</li>
+            <li>Restart until fully updated.</li>
+            <li>Update required third-party software only.</li>
           </ol>
         </li>
         
-        <li><strong>Firewall Settings 🔥🧱</strong>
+        <li><strong>Users and Groups</strong>
           <ol class="checklist-sublist">
-            <li>Search up Windows Firewall</li>
-            <li>Make sure it's on.</li>
-            <li>If any apps need permissions for it then you may enable it.</li>
+            <li>Compare every account to the README.</li>
+            <li>Disable Guest and Administrator unless required.</li>
+            <li>Remove unauthorized administrators.</li>
+            <li>Do not modify WDAGUtilityAccount or DefaultAccount unless instructed.</li>
           </ol>
         </li>
         
-        <li><strong>Local Security Policies 🔒</strong>
+        <li><strong>Password Policy</strong>
           <ol class="checklist-sublist">
-            <li>Type in secpol (aka Local Security Policies)</li>
-            <li>Open Account Policies → Password Policy.</li>
-            <li>Change Enforce Password History to 7</li>
-            <li>Set Maximum Password Age to 99 days</li>
-            <li>Set Minimum Password Age to 15 days</li>
-            <li>Set Minimum Password length to 10 Characters</li>
-            <li>Make sure to enable "Password must meet complexity requirements"</li>
-            <li>Head to → Account Lockout Policy</li>
-            <li>Set Account Lockout Threshold to 6</li>
-            <li>Set Account Lockout Duration to 0</li>
-            <li>Reset account lockout counter after 15</li>
-            <li>Go to Local Policies → Audit Policy & set to record every type of audit with both success and failure</li>
+            <li>History: 24</li>
+            <li>Maximum age: 30</li>
+            <li>Minimum age: 5</li>
+            <li>Minimum length: 14</li>
+            <li>Complexity enabled</li>
+            <li>Reversible encryption disabled</li>
           </ol>
         </li>
         
-        <li><strong>Remote Desktop 🖥️</strong>
+        <li><strong>Account Lockout</strong>
           <ol class="checklist-sublist">
-            <li>Go to Settings → 🔍 Remote Desktop Settings</li>
-            <li>If nothing is mentioned Disable “RD”</li>
+            <li>Threshold: 5-10 attempts depending on README.</li>
+            <li>Reset counter: 15 min.</li>
+            <li>Duration: 30 min.</li>
           </ol>
         </li>
         
-        <li><strong>Other Users 🧑</strong>
+        <li><strong>Audit Policy</strong>
           <ol class="checklist-sublist">
-            <li>Change passwords of weak users (There will ALWAYS be one)</li>
-            <li>Remove Admin Perms from user that was given the wrong role.</li>
+            <li>Never blindly enable every audit setting.</li>
+            <li>Match README exactly.</li>
+            <li>Advanced Audit Policy overrides basic policy.</li>
           </ol>
         </li>
         
-        <li><strong>Quick Rapid Fire Things 🔥</strong>
+        <li><strong>Security Options</strong>
           <ol class="checklist-sublist">
-            <li>Run a virus scan</li>
-            <li>Check for Protection Updates</li>
+            <li>Review all settings.</li>
+            <li>Prioritize UAC, NTLMv2, Guest, Administrator, anonymous enumeration, blank passwords.</li>
+            <li>Avoid forcing FIPS/Smart Card/Kerberos unless README requires.</li>
           </ol>
         </li>
         
-        <li><strong>Virus & Threat Protection 🛡️</strong>
+        <li><strong>Firewall</strong>
           <ol class="checklist-sublist">
-            <li>In App & Browser Protection change the settings below</li>
-            <li>Set Check apps and files to warn (if not)</li>
-            <li>And review other settings that are wrong and need to be fixed.</li>
-            <li>Make sure in Virus & Threat Protection settings are set to be protected/enabled and working</li>
+            <li>All profiles ON.</li>
+            <li>Review inbound rules.</li>
+            <li>Do not blindly block web/server ports.</li>
+            <li>Remove malicious rules.</li>
           </ol>
         </li>
         
-        <li><strong>Install Important Programs 📲</strong>
+        <li><strong>Windows Defender</strong>
           <ol class="checklist-sublist">
-            <li>Install the latest stable edition of Notepad++</li>
-            <li>If Firefox is not installed then install it</li>
+            <li>Definitions updated.</li>
+            <li>Real-time protection on.</li>
+            <li>Check Tamper Protection.</li>
+            <li>Review exclusions.</li>
+            <li>Run Full Scan early.</li>
+            <li>Review Protection History.</li>
           </ol>
         </li>
+
+        <li><strong>Services</strong>
+          <ol class="checklist-sublist">
+            <li>Disable Telnet, Remote Registry, SMB1, TFTP when not required.</li>
+            <li>Leave IIS, DNS, FTP, SSH, WinRM, SMTP, RDP if image requires them.</li>
+            <li>Research unknown services before disabling.</li>
+          </ol>
+        </li>
+
+        <li><strong>Installed Programs</strong>
+          <ol class="checklist-sublist">
+            <li>Check README for what programs are permitted.</li>
+            <li>Remove unauthorized software.</li>
+            <li>Use Programs and Features first.</li>
+            <li>Don't uninstall the scoring engine.</li>
+          </ol>
+        </li>
+
+        <li><strong>Scheduled Tasks</strong>
+          <ol class="checklist-sublist">
+            <li>Inspect every folder.</li>
+            <li>Delete malicious tasks.</li>
+            <li>Keep required tasks.</li>
+          </ol>
+        </li>
+
+        <li><strong>Startup Apps</strong>
+          <ol class="checklist-sublist">
+            <li>Disable unnecessary startup items.</li>
+            <li>Remove malicious startup items.</li>
+            <li>Keep required startup items.</li>
+            <li>Leave Defender and required security tools enabled.</li>
+          </ol>
+        </li>
+
+        <li><strong>Hosts File</strong>
+          <ol class="checklist-sublist">
+            <li>Remove malicious redirects.</li>
+            <li>Keep localhost entries.</li>
+            <li>Preserve README-required entries.</li>
+          </ol>
+        </li>
+
+          <li><strong>PowerShell</strong>
+          <ol class="checklist-sublist">
+            <li>Disable PowerShell v2.</li>
+            <li>Use RemoteSigned if appropriate.</li>
+            <li>Enable logging only if required by image.</li>
+            </ol>
+          </li>
+
+          <li><strong>Optional Features</strong>
+          <ol class="checklist-sublist">
+            <li>Disable SMB1.</li>
+            <li>Disable Telnet Client.</li>
+            <li>Leave IPv6 unless README says otherwise.</li>
+            <li>Review Hyper-V/WSL/IIS based on image.</li>
+          </ol>
+        </li>
+
+        <li><strong>Malware Hunting</strong>
+          <ol class="checklist-sublist">
+            <li>Check running processes.</li>
+            <li>Use netstat -ano.</li>
+            <li>Review Task Manager.</li>
+            <li>Search user folders for suspicious executables.</li>
+            <li>Inspect Defender quarantine.</li>
+          </ol>
+        </li>
+
+        <li><strong>Quick Commands</strong>
+          <ol class="checklist-sublist">
+            <li>lusrmgr.msc</li>
+            <li>secpol.msc</li>
+            <li>gpedit.msc</li>
+            <li>services.msc</li>
+            <li>wf.msc</li>
+            <li>taskschd.msc</li>
+            <li>compmgmt.msc</li>
+            <li>optionalfeatures</li>
+            <li>ncpa.cpl</li>
+            <li>appwiz.cpl</li>
+            <li>Get-LocalUser</li>
+            <li>Get-Service</li>
+            <li>Get-Process</li>
+            <li>Get-MpComputerStatus</li>
+          </ol>
       </ol>
     </div>
   </section>
