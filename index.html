@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CyberPatriot Center</title>
 
-  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="icon" type="image/png" href="images/favicon.png">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -16,17 +16,17 @@
 
   <header>
     <a href="index.html" class="brand" style="text-decoration: none;">
-      <img src="logo.png" alt="Logo" class="brand-logo">
+      <img src="images/logo.png" alt="Logo" class="brand-logo">
       CyberPatriot Center
     </a>
     
     <nav class="desktop-nav">
       <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="onboarding.html">New Team Onboarding</a></li>
-        <li><a href="peshrow.html">Peshrow's Page</a></li>
-        <li><a href="archives.html">Scores Archives</a></li>
-        <li><a href="resources.html">Resources</a></li>
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/pages/onboarding.html">New Team Onboarding</a></li>
+        <li><a href="/pages/peshrow.html">Peshrow's Page</a></li>
+        <li><a href="/pages/archives.html">Scores Archives</a></li>
+        <li><a href="/pages/resources.html">Resources</a></li>
       </ul>
     </nav>
     <button class="menu-toggle" id="menuToggle" aria-label="Open Menu">☰</button>
@@ -37,11 +37,11 @@
   <div class="sidebar-nav" id="sidebarMenu">
     <button class="close-btn" id="closeMenu">✕</button>
     <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="onboarding.html">New Team Onboarding</a></li>
-      <li><a href="peshrow.html">Peshrow's Page</a></li>
-      <li><a href="archives.html">Archives</a></li>
-      <li><a href="resources.html">Resources</a></li>
+      <li><a href="pages/index.html">Home</a></li>
+      <li><a href="pages/onboarding.html">New Team Onboarding</a></li>
+      <li><a href="pages/peshrow.html">Peshrow's Page</a></li>
+      <li><a href="pages/archives.html">Archives</a></li>
+      <li><a href="pages/resources.html">Resources</a></li>
     </ul>
   </div>
 
@@ -64,7 +64,7 @@
 
   <!-- Schedule Image Section -->
   <section class="info-image-section">
-    <img src="CP19-COMPETITION-SCHEDULE-HERO.png" alt="CyberPatriot 19 Schedule" class="info-graphic">
+    <img src="images/CP19-COMPETITION-SCHEDULE-HERO.png" alt="CyberPatriot 19 Schedule" class="info-graphic">
   </section>
 
   <script>
@@ -123,74 +123,6 @@
       interactiveItem.addEventListener('mouseenter', () => mainCursor.classList.add('hovering'));
       interactiveItem.addEventListener('mouseleave', () => mainCursor.classList.remove('hovering'));
     });
-
-    // Unmute background music on first user interaction
-    const bgMusic = document.getElementById('bgMusic');
-    const unmuteAudio = () => {
-      bgMusic.muted = false;
-      document.removeEventListener('click', unmuteAudio);
-      document.removeEventListener('keydown', unmuteAudio);
-    };
-    document.addEventListener('click', unmuteAudio);
-    document.addEventListener('keydown', unmuteAudio);
-
-    // Audio control buttons
-    const playPauseBtn = document.getElementById('playPauseBtn');
-    const muteBtn = document.getElementById('muteBtn');
-
-    playPauseBtn.addEventListener('click', () => {
-      if (bgMusic.paused) {
-        bgMusic.play();
-        playPauseBtn.textContent = '⏸ Pause';
-        bgMusic.muted = false;
-      } else {
-        bgMusic.pause();
-        playPauseBtn.textContent = '▶ Play';
-      }
-    });
-
-    muteBtn.addEventListener('click', () => {
-      bgMusic.muted = !bgMusic.muted;
-      muteBtn.textContent = bgMusic.muted ? '🔇 Muted' : '🔊 Unmute';
-      muteBtn.classList.toggle('active', bgMusic.muted);
-    });
-
-    // Persist audio playback state across page navigation
-    const saveAudioState = () => {
-      sessionStorage.setItem('audioTime', bgMusic.currentTime);
-      sessionStorage.setItem('audioMuted', bgMusic.muted);
-      sessionStorage.setItem('audioPaused', bgMusic.paused);
-    };
-
-    const restoreAudioState = () => {
-      const savedTime = sessionStorage.getItem('audioTime');
-      const savedMuted = sessionStorage.getItem('audioMuted');
-      const savedPaused = sessionStorage.getItem('audioPaused');
-      
-      // Only restore if we have saved state (returning from another page)
-      if (savedTime !== null) {
-        bgMusic.currentTime = parseFloat(savedTime);
-        bgMusic.muted = savedMuted === 'true';
-        
-        // Only play if it was playing before
-        if (savedPaused === 'false') {
-          bgMusic.play().catch(err => console.log('Autoplay prevented:', err));
-          playPauseBtn.textContent = '⏸ Pause';
-        } else {
-          bgMusic.pause();
-          playPauseBtn.textContent = '▶ Play';
-        }
-        muteBtn.textContent = bgMusic.muted ? '🔇 Muted' : '🔊 Unmute';
-        muteBtn.classList.toggle('active', bgMusic.muted);
-      }
-    };
-
-    // Restore audio state immediately and on load
-    restoreAudioState();
-    window.addEventListener('load', restoreAudioState);
-    window.addEventListener('beforeunload', saveAudioState);
-    bgMusic.addEventListener('timeupdate', saveAudioState);
-
   </script>
 
 </body>
