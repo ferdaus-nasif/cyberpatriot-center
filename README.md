@@ -10,4 +10,4 @@ Welcome to **CyberPatriot Center**, a website for all info about CyberPatriot at
 **☁️ Cloudflare**: https://cyberpatriotcenter.ferdausnasif.workers.dev/
 
 ---
-# **NOT AFFILIATED WITH CYBERPATRIOT OR AFA**
+# **NOT AFFILIATED WITH CYBERPATRIOT OR AFA OR INDEPENDENCE HIGH SCHOOL**
