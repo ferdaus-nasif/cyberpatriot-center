@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scoreboard - CyberPatriot Center</title>
+  <link rel="icon" type="image/png" href="/images/favicon.png">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="lens-cursor" id="cursor" aria-hidden="true">
+    <div class="loupe-viewport"></div>
+  </div>
+
+  <header>
+    <a href="/index.html" class="brand" style="text-decoration: none;">
+      <img src="/images/logo.png" alt="Logo" class="brand-logo">
+      CyberPatriot Center
+    </a>
+
+    <nav class="desktop-nav">
+      <ul>
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/pages/team.html">The Team</a></li>
+        <li><a href="/pages/peshrow.html">Peshrow's Page</a></li>
+        <li><a href="/pages/scores.html" style="color: #00a2ff;">Scores</a></li>
+        <li><a href="/pages/resources.html">Resources</a></li>
+      </ul>
+    </nav>
+    <button class="menu-toggle" id="menuToggle" aria-label="Open Menu">☰</button>
+  </header>
+
+  <div class="sidebar-nav" id="sidebarMenu">
+    <button class="close-btn" id="closeMenu">✕</button>
+    <ul>
+      <li><a href="/index.html">Home</a></li>
+      <li><a href="/pages/team.html">The Team</a></li>
+      <li><a href="/pages/peshrow.html">Peshrow's Page</a></li>
+      <li><a href="/pages/scores.html" style="color: #00a2ff;">Scores</a></li>
+      <li><a href="/pages/resources.html">Resources</a></li>
+    </ul>
+  </div>
+
+  <section class="hero">
+    <h1><span>Scores</span></h1>
+  </section>
+
+  <div class="announcement-bar">
+    <a href="#scoreboard" style="color: inherit; text-decoration: underline;">SCOREBOARD</a>
+  </div>
+
+  <section class="content-section" id="scoreboard">
+    <h2>Competition Scores</h2>
+    <p class="tribute-text">Scores will be posted here as they become available.</p>
+  </section>
+
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const closeMenu = document.getElementById('closeMenu');
+    const sidebarMenu = document.getElementById('sidebarMenu');
+
+    menuToggle.addEventListener('click', () => {
+      sidebarMenu.classList.add('active');
+    });
+
+    closeMenu.addEventListener('click', () => {
+      sidebarMenu.classList.remove('active');
+    });
+
+    const mainCursor = document.getElementById('cursor');
+    window.addEventListener('mousemove', (event) => {
+      mainCursor.style.left = `${event.clientX}px`;
+      mainCursor.style.top = `${event.clientY}px`;
+    });
+
+    document.querySelectorAll('a, button, .arrow-down').forEach((interactiveItem) => {
+      interactiveItem.addEventListener('mouseenter', () => mainCursor.classList.add('hovering'));
+      interactiveItem.addEventListener('mouseleave', () => mainCursor.classList.remove('hovering'));
+    });
+  </script>
+</body>
+</html>

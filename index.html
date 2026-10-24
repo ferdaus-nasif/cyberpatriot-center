@@ -23,9 +23,9 @@
     <nav class="desktop-nav">
       <ul>
         <li><a href="/index.html">Home</a></li>
-        <li><a href="/pages/onboarding.html">New Team Onboarding</a></li>
+        <li><a href="/pages/team.html">The Team</a></li>
         <li><a href="/pages/peshrow.html">Peshrow's Page</a></li>
-        <li><a href="/pages/archives.html">Scores Archives</a></li>
+        <li><a href="/pages/scores.html">Scores</a></li>
         <li><a href="/pages/resources.html">Resources</a></li>
       </ul>
     </nav>
@@ -38,9 +38,9 @@
     <button class="close-btn" id="closeMenu">✕</button>
     <ul>
       <li><a href="pages/index.html">Home</a></li>
-      <li><a href="pages/onboarding.html">New Team Onboarding</a></li>
+      <li><a href="pages/team.html">The Team</a></li>
       <li><a href="pages/peshrow.html">Peshrow's Page</a></li>
-      <li><a href="pages/archives.html">Archives</a></li>
+      <li><a href="/pages/scores.html">Scores</a></li>
       <li><a href="pages/resources.html">Resources</a></li>
     </ul>
   </div>
@@ -54,12 +54,18 @@
   </section>
 
   <div class="announcement-bar">
-    CYBERPATRIOT 19 (UNDER CONSTRUCTION)
+    CYBERPATRIOT 19
   </div>
 
   <section class="countdown-section">
-    <div class="countdown-title">COUNTDOWN TO CYBERPATRIOT ROUND 1 (OCT. 24, 2026)</div>
+    <div class="countdown-title">CYBERPATRIOT COMMAND CENTER</div>
     <div class="timer-container" id="live-countdown">---</div>
+  </section>
+
+  <section class="cyber-field-guide-section">
+    <a href="/pages/CyberPatriot-Field-Guide-2.html" class="cyber-field-guide-link">
+      <div class="countdown-title">CYBERPATRIOT FIELD GUIDE (Made by Sean Henning)</div>
+    </a>
   </section>
 
   <!-- Schedule Image Section -->
@@ -87,7 +93,7 @@
 
       if (distance < 0) {
         clearInterval(x);
-        document.getElementById("live-countdown").innerHTML = "<span class='lbl'>Round 1 is Live</span>";
+        document.getElementById("live-countdown").innerHTML = "<span class='lbl'>ROUND 1 IS LIVE, SEAL TEAM SIX</span>";
       }
     }, 1000);
 
