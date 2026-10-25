@@ -2,109 +2,24 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>New Team Onboarding - CyberPatriot Center</title>
-  <link rel="icon" type="image/png" href="/images/favicon.png">
-  <link rel="stylesheet" href="/styles.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Team - CyberPatriot Center</title>
+  <meta name="description" content="The CyberPatriot 19 lineup for Team 6.">
+  <meta name="theme-color" content="#06080c">
+  <link rel="icon" type="image/png" href="../images/favicon.png">
+  <link rel="preload" href="../unbounded-black.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../styles.css">
+  <script src="../site.js" defer></script>
 </head>
 <body>
-  <!-- Complete, lightweight lens glass structure -->
-  <div class="lens-cursor" id="cursor" aria-hidden="true">
-    <div class="loupe-viewport"></div>
-  </div>
-
   <header>
-    <a href="/index.html" class="brand" style="text-decoration: none;">
-      <img src="/images/logo.png" alt="Logo" class="brand-logo">
-      CyberPatriot Center
-    </a>
-
-    <nav class="desktop-nav">
-      <ul>
-        <li><a href="/index.html">Home</a></li>
-        <li><a href="/pages/team.html">The Team</a></li>
-        <li><a href="/pages/peshrow.html">Peshrow's Page</a></li>
-        <li><a href="/pages/scores.html">Scores</a></li>
-        <li><a href="/pages/resources.html">Resources</a></li>
-      </ul>
-    </nav>
-    <button class="menu-toggle" id="menuToggle" aria-label="Open Menu">☰</button>
+    <a class="brand" href="../index.html"><img src="../images/logo.png" alt="" width="28" height="28">CyberPatriot Center</a>
+    <nav id="nav" aria-label="Main"><ul><li><a href="../index.html">Home</a></li><li><a href="team.html" aria-current="page">The Team</a></li><li><a href="peshrow.html">Peshrow's Page</a></li><li><a href="scores.html">Scores</a></li><li><a href="resources.html">Resources</a></li></ul></nav>
+    <button class="menu" id="navToggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="nav"><i></i><i></i></button>
   </header>
-
-  <div class="sidebar-nav" id="sidebarMenu">
-    <button class="close-btn" id="closeMenu">✕</button>
-    <ul>
-      <li><a href="/index.html">Home</a></li>
-      <li><a href="/pages/team.html" style="color: #00a2ff;">The Team</a></li>
-      <li><a href="/pages/peshrow.html">Peshrow's Page</a></li>
-      <li><a href="/pages/scores.html">Scores</a></li>
-      <li><a href="/pages/resources.html">Resources</a></li>
-    </ul>
-  </div>
-
-  <!-- WELCOME CONTENT -->
-  <section class="hero">
-    <h1>
-      <span>The Team</span>
-      <!-- <span>Onboarding</span> -->
-    </h1>
-    <div class="arrow-down" id="scrollDown">^</div>
-  </section>
-
-  <div class="announcement-bar">
-    SEAL TEAM SIX
-  </div>
-
-  <!-- <section class="content-section">
-    <div class="tribute-text">Very excited to have you on the team. As you know, Peshrow has graduated so we needed a replacement for him. But we also wanted a replacement for Laroussi, because, well, Laroussi is Laroussi. Anyway, we have recruited you two to join us for CyberPatriot 19 this school year. I believe you two are great additions to our team. We already have Adi and Rohan with us, so I think you guys can add some flare to our team. Nonetheless, I believe this CyberPatriot season will be a great one. In the meantime, you can check out the website and explore some pages. This website is for all the CyberPatriot information for our team. All the scores and everything else will be posted here to view for ourselves. For now, I'll keep updating this with more information as it comes.</div>
-    <div class="tribute-text">- Nasif Ferdaus</div>
- </section> -->
-
-<section class="current-lineup">
-  <h2>CURRENT LINEUP</h2>
-  <ul>
-    <li>Nasif Ferdaus (Captain)</li>
-    <li>Aditya Godugu</li>
-    <li>Rohan Chilukuri</li>
-    <li>Sean Henning</li>
-    <li>Greeshmanth Ravi</li>
-    <li>Sahasra Yamagani</li>
-  </ul>
-</section>
-
-  <script>
-    // Scroll down on carrot click
-    const scrollDown = document.getElementById('scrollDown');
-    scrollDown.addEventListener('click', () => {
-      window.scrollBy({ top: window.innerHeight * 0.8, behavior: 'smooth' });
-    });
-
-    // Sidebar open and close
-    const menuToggle = document.getElementById('menuToggle');
-    const closeMenu = document.getElementById('closeMenu');
-    const sidebarMenu = document.getElementById('sidebarMenu');
-
-    menuToggle.addEventListener('click', () => {
-      sidebarMenu.classList.add('active');
-    });
-
-    closeMenu.addEventListener('click', () => {
-      sidebarMenu.classList.remove('active');
-    });
-
-    const mainCursor = document.getElementById('cursor');
-
-    // Slides the lens shell layout perfectly alongside your raw screen mouse input values
-    window.addEventListener('mousemove', (e) => {
-      mainCursor.style.left = `${e.clientX}px`;
-      mainCursor.style.top = `${e.clientY}px`;
-    });
-
-    // Manages link hover expansion states cleanly
-    document.querySelectorAll('a, button, .arrow-down').forEach(interactiveItem => {
-      interactiveItem.addEventListener('mouseenter', () => mainCursor.classList.add('hovering'));
-      interactiveItem.addEventListener('mouseleave', () => mainCursor.classList.remove('hovering'));
-    });
-  </script>
+  <main>
+<section class="wrap page-head"><h1>The Team</h1><p>Seal Team Six, CyberPatriot 19.</p></section><section class="wrap sec"><div class="team"><div class="member"><span class="av" aria-hidden="true">NF</span><div><b>Nasif Ferdaus</b><small>Captain</small></div></div><div class="member"><span class="av" aria-hidden="true">AG</span><div><b>Aditya Godugu</b><small>Team member</small></div></div><div class="member"><span class="av" aria-hidden="true">RC</span><div><b>Rohan Chilukuri</b><small>Team member</small></div></div><div class="member"><span class="av" aria-hidden="true">SH</span><div><b>Sean Henning</b><small>Team member</small></div></div><div class="member"><span class="av" aria-hidden="true">GR</span><div><b>Greeshmanth Ravi</b><small>Team member</small></div></div><div class="member"><span class="av" aria-hidden="true">SY</span><div><b>Sahasra Yamagani</b><small>Team member</small></div></div></div></section>
+  </main>
+  <footer><div class="wrap"><span>CyberPatriot Center</span><span>Not affiliated with CyberPatriot, AFA, or Independence High School.</span></div></footer>
 </body>
 </html>

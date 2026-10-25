@@ -2,134 +2,59 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>CyberPatriot Center</title>
-
+  <meta name="description" content="Schedule, checklists, and scores for Independence High School's CyberPatriot team.">
+  <meta name="theme-color" content="#06080c">
   <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="preload" href="unbounded-black.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="styles.css">
+  <script src="site.js" defer></script>
 </head>
 <body>
-  <!-- Complete, lightweight lens glass structure -->
-  <div class="lens-cursor" id="cursor" aria-hidden="true">
-    <div class="loupe-viewport"></div>
-  </div>
-
   <header>
-    <a href="index.html" class="brand" style="text-decoration: none;">
-      <img src="images/logo.png" alt="Logo" class="brand-logo">
-      CyberPatriot Center
-    </a>
-    
-    <nav class="desktop-nav">
-      <ul>
-        <li><a href="/index.html">Home</a></li>
-        <li><a href="/pages/team.html">The Team</a></li>
-        <li><a href="/pages/peshrow.html">Peshrow's Page</a></li>
-        <li><a href="/pages/scores.html">Scores</a></li>
-        <li><a href="/pages/resources.html">Resources</a></li>
-      </ul>
-    </nav>
-    <button class="menu-toggle" id="menuToggle" aria-label="Open Menu">☰</button>
+    <a class="brand" href="index.html"><img src="images/logo.png" alt="" width="28" height="28">CyberPatriot Center</a>
+    <nav id="nav" aria-label="Main"><ul><li><a href="index.html" aria-current="page">Home</a></li><li><a href="pages/team.html">The Team</a></li><li><a href="pages/peshrow.html">Peshrow's Page</a></li><li><a href="pages/scores.html">Scores</a></li><li><a href="pages/resources.html">Resources</a></li></ul></nav>
+    <button class="menu" id="navToggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="nav"><i></i><i></i></button>
   </header>
+  <main>
 
-
-   <!-- Sliding Sidebar for mobile -->
-  <div class="sidebar-nav" id="sidebarMenu">
-    <button class="close-btn" id="closeMenu">✕</button>
-    <ul>
-      <li><a href="pages/index.html">Home</a></li>
-      <li><a href="pages/team.html">The Team</a></li>
-      <li><a href="pages/peshrow.html">Peshrow's Page</a></li>
-      <li><a href="/pages/scores.html">Scores</a></li>
-      <li><a href="pages/resources.html">Resources</a></li>
-    </ul>
-  </div>
-
-  <section class="hero">
-    <h1>
-      <span>CyberPatriot</span>
-      <span>Center</span>
-    </h1>
-    <div class="arrow-down" id="scrollDown">⌃</div>
-  </section>
-
-  <div class="announcement-bar">
-    CYBERPATRIOT 19
-  </div>
-
-  <section class="countdown-section">
-    <div class="countdown-title">CYBERPATRIOT COMMAND CENTER</div>
-    <div class="timer-container" id="live-countdown">---</div>
-  </section>
-
-  <section class="cyber-field-guide-section">
-    <a href="/pages/CyberPatriot-Field-Guide.html" class="cyber-field-guide-link">
-      <div class="countdown-title">CYBERPATRIOT FIELD GUIDE (Made by Sean Henning)</div>
-    </a>
-  </section>
-
-  <!-- Schedule Image Section -->
-  <section class="info-image-section">
-    <img src="images/CP19-COMPETITION-SCHEDULE-HERO.png" alt="CyberPatriot 19 Schedule" class="info-graphic">
-  </section>
-
-  <script>
-    const targetDate = new Date("2026-10-24T09:00:00").getTime();
-
-    const x = setInterval(function() {
-      const now = new Date().getTime();
-      const distance = targetDate - now;
-
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-      document.getElementById("live-countdown").innerHTML = 
-        `<span class="num">${days}</span><span class="lbl">d</span>` +
-        `<span class="num">${hours}</span><span class="lbl">h</span>` +
-        `<span class="num">${minutes}</span><span class="lbl">m</span>` +
-        `<span class="num">${seconds}</span><span class="lbl">s</span>`;
-
-      if (distance < 0) {
-        clearInterval(x);
-        document.getElementById("live-countdown").innerHTML = "<span class='lbl'>ROUND 1 IS LIVE, SEAL TEAM SIX</span>";
-      }
-    }, 1000);
-
-    // Sidebar open and close
-    const menuToggle = document.getElementById('menuToggle');
-    const closeMenu = document.getElementById('closeMenu');
-    const sidebarMenu = document.getElementById('sidebarMenu');
-
-    menuToggle.addEventListener('click', () => {
-      sidebarMenu.classList.add('active');
-    });
-
-    closeMenu.addEventListener('click', () => {
-      sidebarMenu.classList.remove('active');
-    });
-
-    // Scroll down on carrot click
-    const scrollDown = document.getElementById('scrollDown');
-    scrollDown.addEventListener('click', () => {
-      window.scrollBy({ top: window.innerHeight * 0.8, behavior: 'smooth' });
-    });
-
-    const mainCursor = document.getElementById('cursor');
-
-    // Slides the lens shell layout perfectly alongside your raw screen mouse input values
-    window.addEventListener('mousemove', (e) => {
-      mainCursor.style.left = `${e.clientX}px`;
-      mainCursor.style.top = `${e.clientY}px`;
-    });
-
-    // Manages link hover expansion states cleanly
-    document.querySelectorAll('a, button, .arrow-down').forEach(interactiveItem => {
-      interactiveItem.addEventListener('mouseenter', () => mainCursor.classList.add('hovering'));
-      interactiveItem.addEventListener('mouseleave', () => mainCursor.classList.remove('hovering'));
-    });
-  </script>
-
+    <section class="hero">
+      <div class="wrap">
+        <span class="chip"><i></i>CyberPatriot 19</span>
+        <h1 class="display"><span class="ln" style="--i:0"><span>CyberPatriot</span></span><span class="ln" style="--i:1"><span>Center</span></span></h1>
+        <p class="lede">Schedule, checklists, and scores for Independence High School's Team 6, codenamed "SEAL Team Six", all in one place.</p>
+        <div class="cta">
+          <a class="btn pri" href="pages/CyberPatriot-Field-Guide.html">Open the field guide</a>
+          <a class="btn ghost" href="pages/resources.html">Competition checklists</a>
+        </div>
+      </div>
+    </section>
+    <section class="wrap sec" id="command-center">
+      <h2 class="label">Command Center</h2>
+      <p class="sub">Round 2 begins Saturday, November 14 at 9:00 AM.</p>
+      <div class="clock" id="clock" role="timer" aria-label="Time until Round 2">
+        <div class="unit"><b data-u="d">00</b><small>days</small></div>
+        <div class="unit"><b data-u="h">00</b><small>hours</small></div>
+        <div class="unit"><b data-u="m">00</b><small>minutes</small></div>
+        <div class="unit"><b data-u="s">00</b><small>seconds</small></div>
+      </div>
+    </section>
+    <section class="wrap sec">
+      <div class="bento">
+<a class="card feat s4" href="pages/CyberPatriot-Field-Guide.html"><span class="go" aria-hidden="true">&#8599;</span><div><h3>CyberPatriot Field Guide</h3><p>A full competition reference, made by Sean Henning.</p></div></a>
+<a class="card s2" href="pages/scores.html"><span class="go" aria-hidden="true">&#8599;</span><div><h3>Scores</h3><p>Results as they come in, plus the official scoreboard.</p></div></a>
+<a class="card s2" href="pages/windows.html"><span class="go" aria-hidden="true">&#8599;</span><img class="ico" src="images/windows.png" alt="" loading="lazy"><div><h3>Windows Checklist</h3><p>Harden a Windows image in the right order.</p></div></a>
+<a class="card s2" href="pages/linux.html"><span class="go" aria-hidden="true">&#8599;</span><img class="ico" src="images/linux.png" alt="" loading="lazy"><div><h3>Linux Checklist</h3><p>Users, services, SSH, firewall, and more.</p></div></a>
+<a class="card s2" href="pages/team.html"><span class="go" aria-hidden="true">&#8599;</span><div><h3>The Team</h3><p>Meet the people on SEAL Team Six.</p></div></a>
+      </div>
+    </section>
+    <section class="wrap sec">
+      <h2 class="label">Competition schedule</h2>
+      <p class="sub">Dates for every round of CyberPatriot 19.</p>
+      <div class="frame"><img src="images/CP19-COMPETITION-SCHEDULE-HERO.png" alt="CyberPatriot 19 competition schedule" width="980" height="350" loading="lazy"></div>
+    </section>
+  </main>
+  <footer><div class="wrap"><span>CyberPatriot Center</span><span>Not affiliated with CyberPatriot, AFA, or Independence High School.</span></div></footer>
 </body>
 </html>

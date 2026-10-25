@@ -4,6 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>CyberPatriot Field Guide</title>
+<meta name="theme-color" content="#06080c">
+<link rel="icon" type="image/png" href="../images/favicon.png">
+<script>document.documentElement.setAttribute("data-theme","dark")</script>
 <style>:root{
   --paper:#F2F5F7; --panel:#FFFFFF; --ink:#16232C; --muted:#5A6A77; --faint:#8794A0; --rule:#D5DDE3; --soft:#E8EEF2; --soft2:#DFE7EC;
   --code-bg:#F4F7F9; --code-head:#E9EFF3; --code-ink:#15212A; --focus:#1F6FD1; --hit:#FFE48A; --hit-ink:#16232C;
@@ -527,6 +530,43 @@ main{transition:margin-right .28s var(--ease)}
 .pl-item{max-width:none}
 .sec{content-visibility:auto;contain-intrinsic-size:auto 1800px}
 </style>
+<style id="skin">
+@font-face{font-family:Unbounded;src:url(../unbounded.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:Unbounded;src:url(../unbounded-semibold.woff2) format("woff2");font-weight:600;font-display:swap}
+@font-face{font-family:Unbounded;src:url(../unbounded-black.woff2) format("woff2");font-weight:900;font-display:swap}
+@view-transition{navigation:auto}
+:root:not([data-theme="light"]),:root[data-theme="dark"]{--paper:#06080c;--panel:#0b1018;--soft:#101722;--soft2:#17202d;--rule:#1a2331;--ink:#eaf0f7;--muted:#8d9aae;--faint:#66758a;--code-bg:#080c12;--code-head:#0d131c;--focus:#4db8ff;--w11:#4db8ff;--shadow:0 1px 2px rgba(0,0,0,.4),0 14px 34px -16px rgba(0,0,0,.85)}
+:root[data-theme="light"]{--focus:#0a7fd1}
+:root{--f-body:Inter,"SF Pro Text",system-ui,-apple-system,"Segoe UI",sans-serif;--ease:cubic-bezier(.16,1,.3,1)}
+html{scroll-behavior:smooth;scrollbar-width:thin;scrollbar-color:#243044 transparent}
+*{scrollbar-width:thin;scrollbar-color:#243044 transparent}
+::selection{background:rgba(0,162,255,.35)}
+body{-webkit-font-smoothing:antialiased}
+:root:not([data-theme="light"]) body::before,:root[data-theme="dark"] body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(ellipse 60% 40% at 15% 0,rgba(0,162,255,.13),transparent 70%),radial-gradient(ellipse 40% 30% at 92% 8%,rgba(45,226,196,.07),transparent 70%)}
+.top{background:color-mix(in srgb,var(--paper) 70%,transparent);backdrop-filter:saturate(1.5) blur(18px)}
+.side{background:color-mix(in srgb,var(--panel) 65%,transparent);backdrop-filter:blur(14px)}
+.brand b{font:600 14px/1 Unbounded,var(--f-head);letter-spacing:-.02em}
+.brand span{font:400 14px/1 Unbounded,var(--f-head)}
+.sec-head h1{font:600 25px/1.15 Unbounded,var(--f-head);letter-spacing:-.035em}
+.home-intro h1{font:900 clamp(30px,4.2vw,46px)/1.05 Unbounded,var(--f-head);letter-spacing:-.04em}
+.tab{font-family:Unbounded,var(--f-head);font-size:15px;font-weight:600;border-radius:0 14px 14px 0}
+h2{letter-spacing:-.02em}
+.search input,.pill{border-radius:999px}
+.results{border-radius:16px;box-shadow:var(--shadow-lg)}
+.clock-card{border-radius:20px;background:linear-gradient(180deg,var(--soft),var(--panel))}
+.clock{text-shadow:0 0 44px rgba(0,162,255,.3)}
+.area{border-radius:16px;background:linear-gradient(180deg,var(--soft),var(--panel));transition:transform .4s var(--ease),border-color .3s,box-shadow .3s}
+.area:hover{transform:translateY(-3px)}
+.highlight,details{border-radius:12px}
+.admonition{border-radius:12px;background:color-mix(in srgb,var(--k,var(--focus)) 6%,var(--panel))}
+.nav-group a,.nav-cat,.quick-links a,.icon-btn,.menu-btn{transition:background .2s,color .2s,border-color .2s}
+:root:not([data-theme="light"]) .btn.primary,:root[data-theme="dark"] .btn.primary{background:var(--focus);color:#04121c;border-color:transparent}
+.to-center{text-decoration:none;color:var(--muted)}.to-center:hover{color:var(--ink)}
+.side-back{display:block;padding:8px;margin:0 0 4px;border-radius:8px;color:var(--muted);font:600 13px var(--f-body);text-decoration:none}
+.side-back:hover{color:var(--ink);background:var(--soft)}
+@media (max-width:900px){.to-center{display:none}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,::before,::after{transition:none!important}}
+</style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -558,6 +598,7 @@ main{transition:margin-right .28s var(--ease)}
     </div>
   </div>
   <div class="top-actions">
+    <a class="pill to-center" href="../index.html" title="Back to CyberPatriot Center">Center</a>
     <button class="pill timer" id="timerBtn" title="Round clock">
       <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><circle cx="12" cy="13" r="8" stroke="currentColor" stroke-width="2" fill="none"/><path d="M12 9v4l2.5 2M9 2h6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
       <span id="timerTxt">4:00:00</span>
@@ -581,6 +622,7 @@ main{transition:margin-right .28s var(--ease)}
 </header>
 <div class="layout">
   <nav class="side" id="side" aria-label="Sections">
+    <a class="side-back" href="../index.html">Back to CyberPatriot Center</a>
     <a class="side-home" href="#home">
       <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M4 11 12 4l8 7v9h-5v-6H9v6H4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
       Home and round clock

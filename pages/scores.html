@@ -2,81 +2,27 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Scoreboard - CyberPatriot Center</title>
-  <link rel="icon" type="image/png" href="/images/favicon.png">
-  <link rel="stylesheet" href="/styles.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Scores - CyberPatriot Center</title>
+  <meta name="description" content="CyberPatriot 19 scores for Team 6.">
+  <meta name="theme-color" content="#06080c">
+  <link rel="icon" type="image/png" href="../images/favicon.png">
+  <link rel="preload" href="../unbounded-black.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../styles.css">
+  <script src="../site.js" defer></script>
 </head>
 <body>
-  <div class="lens-cursor" id="cursor" aria-hidden="true">
-    <div class="loupe-viewport"></div>
-  </div>
-
   <header>
-    <a href="/index.html" class="brand" style="text-decoration: none;">
-      <img src="/images/logo.png" alt="Logo" class="brand-logo">
-      CyberPatriot Center
-    </a>
-
-    <nav class="desktop-nav">
-      <ul>
-        <li><a href="/index.html">Home</a></li>
-        <li><a href="/pages/team.html">The Team</a></li>
-        <li><a href="/pages/peshrow.html">Peshrow's Page</a></li>
-        <li><a href="/pages/scores.html" style="color: #00a2ff;">Scores</a></li>
-        <li><a href="/pages/resources.html">Resources</a></li>
-      </ul>
-    </nav>
-    <button class="menu-toggle" id="menuToggle" aria-label="Open Menu">☰</button>
+    <a class="brand" href="../index.html"><img src="../images/logo.png" alt="" width="28" height="28">CyberPatriot Center</a>
+    <nav id="nav" aria-label="Main"><ul><li><a href="../index.html">Home</a></li><li><a href="team.html">The Team</a></li><li><a href="peshrow.html">Peshrow's Page</a></li><li><a href="scores.html" aria-current="page">Scores</a></li><li><a href="resources.html">Resources</a></li></ul></nav>
+    <button class="menu" id="navToggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="nav"><i></i><i></i></button>
   </header>
-
-  <div class="sidebar-nav" id="sidebarMenu">
-    <button class="close-btn" id="closeMenu">✕</button>
-    <ul>
-      <li><a href="/index.html">Home</a></li>
-      <li><a href="/pages/team.html">The Team</a></li>
-      <li><a href="/pages/peshrow.html">Peshrow's Page</a></li>
-      <li><a href="/pages/scores.html" style="color: #00a2ff;">Scores</a></li>
-      <li><a href="/pages/resources.html">Resources</a></li>
-    </ul>
-  </div>
-
-  <section class="hero">
-    <h1><span>Scores</span></h1>
-  </section>
-
-  <div class="announcement-bar">
-    <a href="http://scoreboard.uscyberpatriot.org" style="color: inherit; text-decoration: underline;">SCOREBOARD</a>
-  </div>
-
-  <section class="content-section" id="scoreboard">
-    <h2>Competition Scores</h2>
-    <p class="tribute-text">Scores will be posted here as they become available.</p>
-  </section>
-
-  <script>
-    const menuToggle = document.getElementById('menuToggle');
-    const closeMenu = document.getElementById('closeMenu');
-    const sidebarMenu = document.getElementById('sidebarMenu');
-
-    menuToggle.addEventListener('click', () => {
-      sidebarMenu.classList.add('active');
-    });
-
-    closeMenu.addEventListener('click', () => {
-      sidebarMenu.classList.remove('active');
-    });
-
-    const mainCursor = document.getElementById('cursor');
-    window.addEventListener('mousemove', (event) => {
-      mainCursor.style.left = `${event.clientX}px`;
-      mainCursor.style.top = `${event.clientY}px`;
-    });
-
-    document.querySelectorAll('a, button, .arrow-down').forEach((interactiveItem) => {
-      interactiveItem.addEventListener('mouseenter', () => mainCursor.classList.add('hovering'));
-      interactiveItem.addEventListener('mouseleave', () => mainCursor.classList.remove('hovering'));
-    });
-  </script>
+  <main>
+<section class="wrap page-head"><h1>Scores</h1><p>Scores will be posted here as they become available.</p></section>
+    <section class="wrap sec"><div class="cta" style="animation:none;margin:0">
+      <a class="btn pri" href="http://scoreboard.uscyberpatriot.org" target="_blank" rel="noopener">Open the official scoreboard</a>
+    </div></section>
+  </main>
+  <footer><div class="wrap"><span>CyberPatriot Center</span><span>Not affiliated with CyberPatriot, AFA, or Independence High School.</span></div></footer>
 </body>
 </html>
