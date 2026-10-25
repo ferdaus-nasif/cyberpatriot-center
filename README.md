@@ -1,6 +1,6 @@
 # 🛡️ CyberPatriot Center
 
-Welcome to **CyberPatriot Center**, a website for all info about CyberPatriot at Independence High School.
+Welcome to **CyberPatriot Center**, a website for all info about CyberPatriot at Independence High School. This is specifically for Team 6, also preferably called "SEAL Team Six".
 
 # 🚀 **Links (Mirrors):**
 **▲ Vercel**: https://cyberpatriotcenter.vercel.app
