@@ -17,6 +17,7 @@
     <nav id="nav" aria-label="Main"><ul><li><a href="../index.html">Home</a></li><li><a href="team.html">The Team</a></li><li><a href="peshrow.html">Peshrow's Page</a></li><li><a href="scores.html" aria-current="page">Scores</a></li><li><a href="resources.html">Resources</a></li></ul></nav>
     <button class="menu" id="navToggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="nav"><i></i><i></i></button>
   </header>
+<<<<<<< HEAD
   <main>
 <section class="wrap page-head"><h1>Scores</h1><p>Scores will be posted here as they become available.</p></section>
     <section class="wrap sec"><div class="cta" style="animation:none;margin:0">
@@ -24,5 +25,58 @@
     </div></section>
   </main>
   <footer><div class="wrap"><span>CyberPatriot Center</span><span>Not affiliated with CyberPatriot, AFA, or Independence High School.</span></div></footer>
+=======
+
+  <div class="sidebar-nav" id="sidebarMenu">
+    <button class="close-btn" id="closeMenu">✕</button>
+    <ul>
+      <li><a href="/index.html">Home</a></li>
+      <li><a href="/pages/team.html">The Team</a></li>
+      <li><a href="/pages/peshrow.html">Peshrow's Page</a></li>
+      <li><a href="/pages/scores.html" style="color: #00a2ff;">Scores</a></li>
+      <li><a href="/pages/resources.html">Resources</a></li>
+    </ul>
+  </div>
+
+  <section class="hero">
+    <h1><span>Scores</span></h1>
+  </section>
+
+  <div class="announcement-bar">
+    <a href="http://scoreboard.uscyberpatriot.org" style="color: inherit; text-decoration: underline;">SCOREBOARD</a>
+  </div>
+
+  <section class="content-section" id="scoreboard">
+    <h2>Competition Scores</h2>
+    <p class="tribute-text">Windows 11 (Sean): 100/100</p>
+    <p class="tribute-text">Linux Mint (Rohan): 100/100</p>
+    <p class="tribute-text">Packet Tracer (Greeshmanth/Nasif): ???</p>
+  </section>
+
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const closeMenu = document.getElementById('closeMenu');
+    const sidebarMenu = document.getElementById('sidebarMenu');
+
+    menuToggle.addEventListener('click', () => {
+      sidebarMenu.classList.add('active');
+    });
+
+    closeMenu.addEventListener('click', () => {
+      sidebarMenu.classList.remove('active');
+    });
+
+    const mainCursor = document.getElementById('cursor');
+    window.addEventListener('mousemove', (event) => {
+      mainCursor.style.left = `${event.clientX}px`;
+      mainCursor.style.top = `${event.clientY}px`;
+    });
+
+    document.querySelectorAll('a, button, .arrow-down').forEach((interactiveItem) => {
+      interactiveItem.addEventListener('mouseenter', () => mainCursor.classList.add('hovering'));
+      interactiveItem.addEventListener('mouseleave', () => mainCursor.classList.remove('hovering'));
+    });
+  </script>
+>>>>>>> 7210ec19d7806c7b91eb97003695b59ca0b82fac
 </body>
 </html>

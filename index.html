@@ -19,6 +19,7 @@
   </header>
   <main>
 
+<<<<<<< HEAD
     <section class="hero">
       <div class="wrap">
         <span class="chip"><i></i>CyberPatriot 19</span>
@@ -56,5 +57,106 @@
     </section>
   </main>
   <footer><div class="wrap"><span>CyberPatriot Center</span><span>Not affiliated with CyberPatriot, AFA, or Independence High School.</span></div></footer>
+=======
+
+   <!-- Sliding Sidebar for mobile -->
+  <div class="sidebar-nav" id="sidebarMenu">
+    <button class="close-btn" id="closeMenu">✕</button>
+    <ul>
+      <li><a href="pages/index.html">Home</a></li>
+      <li><a href="pages/team.html">The Team</a></li>
+      <li><a href="pages/peshrow.html">Peshrow's Page</a></li>
+      <li><a href="/pages/scores.html">Scores</a></li>
+      <li><a href="pages/resources.html">Resources</a></li>
+    </ul>
+  </div>
+
+  <section class="hero">
+    <h1>
+      <span>CyberPatriot</span>
+      <span>Center</span>
+    </h1>
+    <div class="arrow-down" id="scrollDown">⌃</div>
+  </section>
+
+  <div class="announcement-bar">
+    CYBERPATRIOT 19
+  </div>
+
+  <section class="countdown-section">
+    <div class="countdown-title">CYBERPATRIOT COMMAND CENTER</div>
+    <div class="timer-container" id="live-countdown">---</div>
+  </section>
+
+  <section class="cyber-field-guide-section">
+    <a href="/pages/CyberPatriot-Field-Guide.html" class="cyber-field-guide-link">
+      <div class="countdown-title">CYBERPATRIOT FIELD GUIDE (Made by Sean Henning)</div>
+    </a>
+  </section>
+
+  <!-- Schedule Image Section -->
+  <section class="info-image-section">
+    <img src="images/CP19-COMPETITION-SCHEDULE-HERO.png" alt="CyberPatriot 19 Schedule" class="info-graphic">
+  </section>
+
+  <script>
+    const targetDate = new Date("2026-10-24T09:00:00").getTime();
+
+    const x = setInterval(function() {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById("live-countdown").innerHTML = 
+        `<span class="num">${days}</span><span class="lbl">d</span>` +
+        `<span class="num">${hours}</span><span class="lbl">h</span>` +
+        `<span class="num">${minutes}</span><span class="lbl">m</span>` +
+        `<span class="num">${seconds}</span><span class="lbl">s</span>`;
+
+      if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("live-countdown").innerHTML = "<span class='lbl'>ROUND 1 IS OVER, ROUND 2 SOON, SEAL TEAM SIX</span>";
+      }
+    }, 1000);
+
+    // Sidebar open and close
+    const menuToggle = document.getElementById('menuToggle');
+    const closeMenu = document.getElementById('closeMenu');
+    const sidebarMenu = document.getElementById('sidebarMenu');
+
+    menuToggle.addEventListener('click', () => {
+      sidebarMenu.classList.add('active');
+    });
+
+    closeMenu.addEventListener('click', () => {
+      sidebarMenu.classList.remove('active');
+    });
+
+    // Scroll down on carrot click
+    const scrollDown = document.getElementById('scrollDown');
+    scrollDown.addEventListener('click', () => {
+      window.scrollBy({ top: window.innerHeight * 0.8, behavior: 'smooth' });
+    });
+
+    const mainCursor = document.getElementById('cursor');
+
+    // Slides the lens shell layout perfectly alongside your raw screen mouse input values
+    window.addEventListener('mousemove', (e) => {
+      mainCursor.style.left = `${e.clientX}px`;
+      mainCursor.style.top = `${e.clientY}px`;
+    });
+
+    // Manages link hover expansion states cleanly
+    document.querySelectorAll('a, button, .arrow-down').forEach(interactiveItem => {
+      interactiveItem.addEventListener('mouseenter', () => mainCursor.classList.add('hovering'));
+      interactiveItem.addEventListener('mouseleave', () => mainCursor.classList.remove('hovering'));
+    });
+  </script>
+
+>>>>>>> 7210ec19d7806c7b91eb97003695b59ca0b82fac
 </body>
 </html>
