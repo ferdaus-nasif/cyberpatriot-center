@@ -1,0 +1,8 @@
+{
+  "name": "cyberpatriot-center",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@vercel/functions": "^3.11.3"
+  }
+}

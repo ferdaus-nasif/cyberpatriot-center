@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CyberPatriot Center</title>
+  <meta name="description" content="Schedule, checklists, and scores for Independence High School's CyberPatriot team.">
+  <meta name="theme-color" content="#000000">
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="site.js" defer></script>
+</head>
+<body>
+  <header>
+    <a class="brand" href="index.html"><img src="images/logo.png" alt="" width="28" height="28">CyberPatriot Center</a>
+    <nav id="nav" aria-label="Main"><ul><li><a href="index.html" aria-current="page">Home</a></li><li><a href="pages/team.html">The Team</a></li><li><a href="pages/peshrow.html">Peshrow's Page</a></li><li><a href="pages/scores.html">Scores</a></li><li><a href="pages/resources.html">Resources</a></li></ul></nav>
+    <button class="menu" id="navToggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="nav"><i></i><i></i></button>
+  </header>
+  <main>
+
+    <section class="hero">
+      <div class="wrap">
+        <span class="chip"><i></i>CyberPatriot 19</span>
+        <h1 class="display"><span class="ln" style="--i:0"><span>CyberPatriot</span></span><span class="ln" style="--i:1"><span>Center</span></span></h1>
+        <p class="lede">Schedule, checklists, and scores for Independence High School's Team 6, codenamed "SEAL Team Six", all in one place.</p>
+        <div class="cta">
+          <a class="btn ghost" href="pages/resources.html">Competition checklists</a>
+        </div>
+      </div>
+    </section>
+    <section class="wrap sec" aria-label="States qualification">
+      <div class="states-achievement">
+        <p class="states-tier">PLATINUM TIER</p>
+        <h2>Top 30% of teams</h2>
+        <p>We've made it to States!</p>
+      </div>
+    </section>
+    <section class="wrap sec" id="command-center">
+      <h2 class="label">Command Center</h2>
+      <p class="sub">States begins Saturday, December 12, 2026 at 8:30 AM.</p>
+      <div class="clock" id="clock" role="timer" aria-label="Time until States">
+        <div class="unit"><b data-u="d">00</b><small>days</small></div>
+        <div class="unit"><b data-u="h">00</b><small>hours</small></div>
+        <div class="unit"><b data-u="m">00</b><small>minutes</small></div>
+        <div class="unit"><b data-u="s">00</b><small>seconds</small></div>
+      </div>
+    </section>
+    <section class="wrap sec">
+      <div class="bento">
+<a class="card s2" href="pages/scores.html"><span class="go" aria-hidden="true">&#8599;</span><div><h3>Scores</h3><p>Results as they come in, plus the official scoreboard.</p></div></a>
+<a class="card s2" href="pages/windows.html"><span class="go" aria-hidden="true">&#8599;</span><img class="ico" src="images/windows.png" alt="" loading="lazy"><div><h3>Windows Checklist</h3><p>Harden a Windows image in the right order.</p></div></a>
+<a class="card s2" href="pages/linux.html"><span class="go" aria-hidden="true">&#8599;</span><img class="ico" src="images/linux.png" alt="" loading="lazy"><div><h3>Linux Checklist</h3><p>Users, services, SSH, firewall, and more.</p></div></a>
+<a class="card s2" href="pages/team.html"><span class="go" aria-hidden="true">&#8599;</span><div><h3>The Team</h3><p>Meet the people on SEAL Team Six.</p></div></a>
+      </div>
+    </section>
+    <section class="wrap sec">
+      <h2 class="label">Competition schedule</h2>
+      <p class="sub">Dates for every round of CyberPatriot 19.</p>
+      <div class="schedule-card">
+        <div class="schedule-art">
+          <div class="schedule-wordmark" role="img" aria-label="CyberPatriot 19">
+            <div class="schedule-name"><span>CYBER</span><span>PATRIOT</span></div>
+            <span class="schedule-year" aria-hidden="true">19</span>
+          </div>
+        </div>
+        <ul class="schedule-dates" aria-label="CyberPatriot 19 competition dates">
+          <li>REGISTRATION OPENS JUNE 2</li>
+          <li>ROUND 1: OCTOBER 22-25</li>
+          <li>ROUND 2 AND INTRO ROUND: NOVEMBER 12-15</li>
+          <li>STATE ROUND: DECEMBER 10-13</li>
+          <li>SEMIFINALS: JANUARY 21-23</li>
+          <li>NATIONAL FINALS: MARCH 12-16</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+  <footer><div class="wrap"><span>CyberPatriot Center</span><span>Not affiliated with CyberPatriot, AFA, or Independence High School.</span></div></footer>
+</body>
+</html>

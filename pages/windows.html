@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Windows Checklist - CyberPatriot Center</title>
+  <meta name="description" content="Windows hardening checklist for CyberPatriot.">
+  <meta name="theme-color" content="#000000">
+  <link rel="icon" type="image/png" href="../images/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <script src="../site.js" defer></script>
+</head>
+<body>
+  <header>
+    <a class="brand" href="../index.html"><img src="../images/logo.png" alt="" width="28" height="28">CyberPatriot Center</a>
+    <nav id="nav" aria-label="Main"><ul><li><a href="../index.html">Home</a></li><li><a href="team.html">The Team</a></li><li><a href="peshrow.html">Peshrow's Page</a></li><li><a href="scores.html">Scores</a></li><li><a href="resources.html" aria-current="page">Resources</a></li></ul></nav>
+    <button class="menu" id="navToggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="nav"><i></i><i></i></button>
+  </header>
+  <main>
+<section class="wrap page-head"><h1>Windows Checklist</h1><p>Work top to bottom. Tap an item to check it off; your progress is saved on this device.</p></section>
+    <section class="wrap sec">
+      <p class="warn"><strong>Do not proceed without investigating the forensics questions and the README file.</strong></p>
+      <div class="cl-bar" role="status"><span id="cl-txt">0 of 0 done</span><div class="track"><i id="cl-fill"></i></div><button class="btn ghost sm" id="cl-reset" type="button">Reset</button></div>
+      <ol class="cl">
+        <li><strong>Windows Update</strong>
+          <ol class="checklist-sublist">
+            <li>Install all updates.</li>
+            <li>Restart until fully updated.</li>
+            <li>Update required third-party software only.</li>
+          </ol>
+        </li>
+        
+        <li><strong>Users and Groups</strong>
+          <ol class="checklist-sublist">
+            <li>Compare every account to the README.</li>
+            <li>Disable Guest and Administrator unless required.</li>
+            <li>Remove unauthorized administrators.</li>
+            <li>Do not modify WDAGUtilityAccount or DefaultAccount unless instructed.</li>
+          </ol>
+        </li>
+        
+        <li><strong>Password Policy</strong>
+          <ol class="checklist-sublist">
+            <li>History: 24</li>
+            <li>Maximum age: 30</li>
+            <li>Minimum age: 5</li>
+            <li>Minimum length: 14</li>
+            <li>Complexity enabled</li>
+            <li>Reversible encryption disabled</li>
+          </ol>
+        </li>
+        
+        <li><strong>Account Lockout</strong>
+          <ol class="checklist-sublist">
+            <li>Threshold: 5-10 attempts depending on README.</li>
+            <li>Reset counter: 15 min.</li>
+            <li>Duration: 30 min.</li>
+          </ol>
+        </li>
+        
+        <li><strong>Audit Policy</strong>
+          <ol class="checklist-sublist">
+            <li>Never blindly enable every audit setting.</li>
+            <li>Match README exactly.</li>
+            <li>Advanced Audit Policy overrides basic policy.</li>
+          </ol>
+        </li>
+        
+        <li><strong>Security Options</strong>
+          <ol class="checklist-sublist">
+            <li>Review all settings.</li>
+            <li>Prioritize UAC, NTLMv2, Guest, Administrator, anonymous enumeration, blank passwords.</li>
+            <li>Avoid forcing FIPS/Smart Card/Kerberos unless README requires.</li>
+          </ol>
+        </li>
+        
+        <li><strong>Firewall</strong>
+          <ol class="checklist-sublist">
+            <li>All profiles ON.</li>
+            <li>Review inbound rules.</li>
+            <li>Do not blindly block web/server ports.</li>
+            <li>Remove malicious rules.</li>
+          </ol>
+        </li>
+        
+        <li><strong>Windows Defender</strong>
+          <ol class="checklist-sublist">
+            <li>Definitions updated.</li>
+            <li>Real-time protection on.</li>
+            <li>Check Tamper Protection.</li>
+            <li>Review exclusions.</li>
+            <li>Run Full Scan early.</li>
+            <li>Review Protection History.</li>
+          </ol>
+        </li>
+
+        <li><strong>Services</strong>
+          <ol class="checklist-sublist">
+            <li>Disable Telnet, Remote Registry, SMB1, TFTP when not required.</li>
+            <li>Leave IIS, DNS, FTP, SSH, WinRM, SMTP, RDP if image requires them.</li>
+            <li>Research unknown services before disabling.</li>
+          </ol>
+        </li>
+
+        <li><strong>Installed Programs</strong>
+          <ol class="checklist-sublist">
+            <li>Check README for what programs are permitted.</li>
+            <li>Remove unauthorized software.</li>
+            <li>Use Programs and Features first.</li>
+            <li>Don't uninstall the scoring engine.</li>
+          </ol>
+        </li>
+
+        <li><strong>Scheduled Tasks</strong>
+          <ol class="checklist-sublist">
+            <li>Inspect every folder.</li>
+            <li>Delete malicious tasks.</li>
+            <li>Keep required tasks.</li>
+          </ol>
+        </li>
+
+        <li><strong>Startup Apps</strong>
+          <ol class="checklist-sublist">
+            <li>Disable unnecessary startup items.</li>
+            <li>Remove malicious startup items.</li>
+            <li>Keep required startup items.</li>
+            <li>Leave Defender and required security tools enabled.</li>
+          </ol>
+        </li>
+
+        <li><strong>Hosts File</strong>
+          <ol class="checklist-sublist">
+            <li>Remove malicious redirects.</li>
+            <li>Keep localhost entries.</li>
+            <li>Preserve README-required entries.</li>
+          </ol>
+        </li>
+
+          <li><strong>PowerShell</strong>
+          <ol class="checklist-sublist">
+            <li>Disable PowerShell v2.</li>
+            <li>Use RemoteSigned if appropriate.</li>
+            <li>Enable logging only if required by image.</li>
+            </ol>
+          </li>
+
+          <li><strong>Optional Features</strong>
+          <ol class="checklist-sublist">
+            <li>Disable SMB1.</li>
+            <li>Disable Telnet Client.</li>
+            <li>Leave IPv6 unless README says otherwise.</li>
+            <li>Review Hyper-V/WSL/IIS based on image.</li>
+          </ol>
+        </li>
+
+        <li><strong>Malware Hunting</strong>
+          <ol class="checklist-sublist">
+            <li>Check running processes.</li>
+            <li>Use netstat -ano.</li>
+            <li>Review Task Manager.</li>
+            <li>Search user folders for suspicious executables.</li>
+            <li>Inspect Defender quarantine.</li>
+          </ol>
+        </li>
+
+        <li><strong>Quick Commands</strong>
+          <ol class="checklist-sublist">
+            <li>lusrmgr.msc</li>
+            <li>secpol.msc</li>
+            <li>gpedit.msc</li>
+            <li>services.msc</li>
+            <li>wf.msc</li>
+            <li>taskschd.msc</li>
+            <li>compmgmt.msc</li>
+            <li>optionalfeatures</li>
+            <li>ncpa.cpl</li>
+            <li>appwiz.cpl</li>
+            <li>Get-LocalUser</li>
+            <li>Get-Service</li>
+            <li>Get-Process</li>
+            <li>Get-MpComputerStatus</li>
+          </ol>
+      </li></ol>
+    </section>
+  </main>
+  <footer><div class="wrap"><span>CyberPatriot Center</span><span>Not affiliated with CyberPatriot, AFA, or Independence High School.</span></div></footer>
+</body>
+</html>
