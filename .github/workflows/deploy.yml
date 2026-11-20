@@ -1,0 +1,45 @@
+name: Deploy to AWS S3 & CloudFront
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Configure AWS credentials via OIDC
+        uses: aws-actions/configure-aws-credentials@v6.3.0
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          aws-region: us-east-1
+
+      - name: Sync static files to S3
+        run: |
+          aws s3 sync . s3://${{ secrets.S3_BUCKET }} --delete \
+            --exclude ".git/*" \
+            --exclude ".github/*" \
+            --exclude "node_modules/*" \
+            --exclude ".vercel/*" \
+            --exclude ".gitignore" \
+            --exclude "middleware.js" \
+            --exclude "vercel.json" \
+            --exclude "package.json" \
+            --exclude "package-lock.json" \
+            --exclude "README.md" \
+            --exclude "LICENSE" \
+            --exclude "SECURITY.md"
+
+      - name: Invalidate CloudFront cache
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} \
+            --paths "/*"
