@@ -65,12 +65,9 @@ async function hasValidCookie(request, secret) {
   return false;
 }
 
-function loginResponse(status, checklistPath, message = '', showTaunt = false) {
+function loginResponse(status, checklistPath, message = '') {
   const error = message
     ? `<p class="error" role="alert">${message}</p>`
-    : '';
-  const taunt = showTaunt
-    ? `<p class="guide-taunt" role="status">You ain't getting any scripts buddy.</p>`
     : '';
   const html = `<!doctype html>
 <html lang="en">
@@ -92,8 +89,6 @@ function loginResponse(status, checklistPath, message = '', showTaunt = false) {
     .guide-card { padding: clamp(24px, 6vw, 40px); border: 1px solid var(--line-bright); border-radius: var(--r); background: linear-gradient(145deg, var(--panel-strong), rgba(8, 12, 18, .92)); box-shadow: 0 24px 60px rgba(0, 0, 0, .38), inset 0 1px rgba(255, 255, 255, .07); -webkit-backdrop-filter: blur(20px) saturate(135%); backdrop-filter: blur(20px) saturate(135%); }
     .guide-card h1 { margin: 0 0 8px; color: var(--text); font: 700 1.7rem/1.2 var(--disp); letter-spacing: -.035em; }
     .guide-card > p { color: var(--mute); }
-    .guide-taunt { position: fixed; right: 16px; bottom: clamp(250px, 36vh, 320px); z-index: 2; width: fit-content; max-width: min(260px, 70vw); margin: 0; padding: 9px 13px; border: 1px solid rgba(255, 255, 255, .2); border-radius: 14px 14px 3px 14px; background: rgba(0, 0, 0, .88); box-shadow: 0 8px 22px rgba(0, 0, 0, .3); color: var(--text); font: 600 .82rem/1.45 var(--disp); text-align: right; pointer-events: none; }
-    .guide-taunt::after { content: ""; position: absolute; right: 12px; bottom: -6px; width: 10px; height: 10px; transform: rotate(45deg); border-right: 1px solid rgba(255, 255, 255, .2); border-bottom: 1px solid rgba(255, 255, 255, .2); background: #070a0f; }
     .guide-card label { display: block; margin: 24px 0 8px; color: var(--text); font: 600 .85rem var(--disp); }
     .guide-card input { width: 100%; padding: 12px 14px; border: 1px solid var(--line-bright); border-radius: 10px; background: rgba(6, 8, 12, .78); color: var(--text); font: 400 1rem var(--body); }
     .guide-card input:focus { border-color: var(--a); outline: 2px solid var(--a); outline-offset: 2px; }
@@ -102,13 +97,11 @@ function loginResponse(status, checklistPath, message = '', showTaunt = false) {
     .guide-card .error { margin-top: 14px; color: #cbd5e1; }
     .guide-return { display: inline-block; margin-top: 24px; color: var(--mute); font: 600 .82rem var(--disp); transition: color .2s ease; }
     .guide-return:hover { color: var(--a); }
-    @media (max-width: 860px) { .guide-taunt { right: 12px; bottom: 12px; max-width: 76vw; } }
     @media (max-width: 480px) { .guide-login-page { padding: 18px; } .guide-warning { font-size: .7rem; } }
   </style>
 </head>
 <body class="guide-login-page">
   <img class="guide-login-art" src="/images/trump.webp" alt="" aria-hidden="true">
-  ${taunt}
   <div class="guide-login-shell">
     <p class="guide-warning" role="note">RESTRICTED: ONLY SEAL TEAM SIX MEMBERS BEYOND THIS POINT</p>
     <main class="guide-card">
@@ -198,7 +191,7 @@ export default async function middleware(request) {
     const formData = await request.formData();
     const submittedPassword = formData.get('password');
     if (typeof submittedPassword !== 'string' || !constantTimeEqual(submittedPassword, secret)) {
-      return loginResponse(401, checklistPath, 'That password was not correct. Please try again.', true);
+      return loginResponse(401, checklistPath, 'That password was not correct. Please try again.');
     }
 
     const expiry = String(Math.floor(Date.now() / 1000) + COOKIE_MAX_AGE);
