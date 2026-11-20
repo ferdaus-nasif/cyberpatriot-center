@@ -101,7 +101,6 @@ function loginResponse(status, checklistPath, message = '') {
   </style>
 </head>
 <body class="guide-login-page">
-  <img class="guide-login-art" src="/images/trump.webp" alt="" aria-hidden="true">
   <div class="guide-login-shell">
     <p class="guide-warning" role="note">RESTRICTED: ONLY SEAL TEAM SIX MEMBERS BEYOND THIS POINT</p>
     <main class="guide-card">
