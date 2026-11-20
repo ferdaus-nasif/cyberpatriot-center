@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Linux Mint Checklist - CyberPatriot Center</title>
+  <meta name="description" content="Linux Mint desktop hardening checklist for CyberPatriot.">
+  <meta name="theme-color" content="#000000">
+  <link rel="icon" type="image/png" href="../images/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <script src="../site.js" defer></script>
+</head>
+<body>
+  <header>
+    <a class="brand" href="../index.html"><img src="../images/logo.png" alt="" width="28" height="28">CyberPatriot Center</a>
+    <nav id="nav" aria-label="Main"><ul><li><a href="../index.html">Home</a></li><li><a href="team.html">The Team</a></li><li><a href="peshrow.html">Peshrow's Page</a></li><li><a href="scores.html">Scores</a></li><li><a href="resources.html" aria-current="page">Resources</a></li></ul></nav>
+    <button class="menu" id="navToggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="nav"><i></i><i></i></button>
+  </header>
+  <main>
+    <section class="wrap page-head"><h1>Linux Mint Checklist</h1><p>Desktop-focused Mint hardening. Tap an item to check it off; progress is saved on this device.</p></section>
+    <section class="wrap sec">
+      <p class="warn"><strong>Read the README and forensics questions first. Preserve required users, desktop access, packages, services, and scoring tools. Mint editions and versions differ; verify each setting on the image before changing it.</strong></p>
+      <div class="cl-bar" role="status"><span id="cl-txt">0 of 0 done</span><div class="track"><i id="cl-fill"></i></div><button class="btn ghost sm" id="cl-reset" type="button">Reset</button></div>
+      <ol class="cl">
+        <li><strong>Baseline and desktop access</strong><ol class="checklist-sublist">
+          <li>Confirm Mint version, edition, desktop environment, hostname, network configuration, and competition role.</li>
+          <li>Read the README, forensics tasks, required-user list, and permitted/prohibited software list.</li>
+          <li>Record the initial configuration and make an approved snapshot or backup if available.</li>
+          <li>Keep a working local login and do not change display manager or desktop packages without verifying recovery access.</li>
+        </ol></li>
+        <li><strong>Users, groups, and login</strong><ol class="checklist-sublist">
+          <li>Compare local accounts and groups with competition requirements; investigate unexpected users and UID 0 accounts.</li>
+          <li>Disable or remove only unauthorized accounts; preserve required team, scoring, and service accounts.</li>
+          <li>Review sudo group membership and sudoers rules; limit administrative access to approved users.</li>
+          <li>Set strong passwords for required interactive accounts and review password aging and lockout policy.</li>
+          <li>Disable automatic login and guest sessions when not required; verify the correct user can still sign in.</li>
+        </ol></li>
+        <li><strong>Updates and software sources</strong><ol class="checklist-sublist">
+          <li>Use Update Manager or APT to review available security and system updates.</li>
+          <li>Review update changes and removals; preserve the required desktop environment, drivers, scoring engine, and applications.</li>
+          <li>Inspect APT sources and additional repositories; remove unauthorized sources and keys.</li>
+          <li>Do not switch Ubuntu base repositories or upgrade Mint releases during a competition unless explicitly instructed.</li>
+          <li>Review installed applications, browser extensions, and startup apps against the permitted software list.</li>
+        </ol></li>
+        <li><strong>Firewall and network sharing</strong><ol class="checklist-sublist">
+          <li>Check firewall status and existing rules; enable the supported firewall only after confirming needed access.</li>
+          <li>Allow required SSH, file sharing, web, and competition traffic; do not lock out remote administration.</li>
+          <li>Review active listeners, network shares, Bluetooth, and connection sharing; disable only unneeded exposure.</li>
+          <li>Check DNS, routes, proxies, and /etc/hosts for unauthorized changes.</li>
+        </ol></li>
+        <li><strong>Remote access and services</strong><ol class="checklist-sublist">
+          <li>Review SSH configuration and authorized_keys if SSH is installed; disable root login when not required.</li>
+          <li>Inventory running and enabled services; identify each service before stopping or disabling it.</li>
+          <li>Check remote desktop, VNC, Samba, printing, web, and discovery services against image requirements.</li>
+          <li>Inspect scheduled tasks, systemd timers, cron jobs, and startup applications for unauthorized entries.</li>
+        </ol></li>
+        <li><strong>Desktop security and privacy</strong><ol class="checklist-sublist">
+          <li>Lock the screen automatically and require authentication to unlock when supported and required.</li>
+          <li>Review screensaver, power, and session settings; disable unattended guest or auto-login access.</li>
+          <li>Review browser security settings, saved credentials, extensions, and default homepage/search changes.</li>
+          <li>Remove unauthorized remote-control tools and verify shared folders and removable-media behavior.</li>
+          <li>Review desktop applets, extensions, panel launchers, and user autostart entries for unexpected items.</li>
+        </ol></li>
+        <li><strong>AppArmor, permissions, and integrity</strong><ol class="checklist-sublist">
+          <li>Check AppArmor status; keep supported profiles active and investigate unexpected profile changes.</li>
+          <li>Verify ownership and permissions of /etc/passwd, /etc/shadow, /etc/group, and /etc/sudoers.</li>
+          <li>Review SUID/SGID files, world-writable directories, home folders, and SSH permissions for unauthorized changes.</li>
+          <li>Do not apply blanket recursive chmod/chown commands or remove package-owned files without investigation.</li>
+        </ol></li>
+        <li><strong>Malware, logs, and persistence</strong><ol class="checklist-sublist">
+          <li>Review running processes, network listeners, shell profiles, cron, systemd units, and user autostart files.</li>
+          <li>Check authentication, system, package, and application logs for unknown logins or unexpected changes.</li>
+          <li>Inspect suspicious files before removal; preserve relevant evidence and avoid unknown cleanup scripts.</li>
+          <li>Check time synchronization and confirm logs remain available and protected.</li>
+        </ol></li>
+        <li><strong>Final verification</strong><ol class="checklist-sublist">
+          <li>Verify a required user can log in and elevate privileges only as authorized.</li>
+          <li>Recheck firewall status, required services, network access, and competition-specific scoring requirements.</li>
+          <li>Restart only when appropriate, then confirm the desktop, drivers, applications, and security settings remain functional.</li>
+          <li>Record unresolved findings and revisit the README before any high-impact change.</li>
+        </ol></li>
+        <li><strong>Quick commands</strong><ol class="checklist-sublist">
+          <li>cat /etc/linuxmint/info</li><li>cat /etc/os-release</li><li>id</li><li>getent passwd</li><li>getent group sudo</li>
+          <li>sudo -l</li><li>apt list --upgradable</li><li>systemctl --type=service --state=running</li>
+          <li>ss -tulpn</li><li>sudo ufw status verbose</li><li>sudo aa-status</li><li>sudo journalctl -p warning -b</li>
+          <li>systemctl list-timers</li><li>find ~ -maxdepth 3 -type f -path '*/.config/autostart/*'</li>
+        </ol></li>
+      </ol>
+    </section>
+  </main>
+  <footer><div class="wrap"><span>CyberPatriot Center</span><span>Not affiliated with CyberPatriot, AFA, or Independence High School.</span></div></footer>
+</body>
+</html>

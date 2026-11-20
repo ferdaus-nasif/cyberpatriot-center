@@ -9,6 +9,14 @@ export const config = {
     '/pages/windows',
     '/pages/linux.html',
     '/pages/linux',
+    '/pages/server.html',
+    '/pages/server',
+    '/pages/debian.html',
+    '/pages/debian',
+    '/pages/mint.html',
+    '/pages/mint',
+    '/pages/scores.html',
+    '/pages/scores',
   ],
 };
 
@@ -76,7 +84,7 @@ function loginResponse(status, checklistPath, message = '') {
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="dark">
   <meta name="theme-color" content="#000000">
-  <title>Team Checklists Access</title>
+  <title>Team Resources Access</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
@@ -104,8 +112,8 @@ function loginResponse(status, checklistPath, message = '') {
   <div class="guide-login-shell">
     <p class="guide-warning" role="note">RESTRICTED: ONLY SEAL TEAM SIX MEMBERS BEYOND THIS POINT</p>
     <main class="guide-card">
-      <h1>Team Checklists</h1>
-      <p>Enter the password to view the team checklists.</p>
+      <h1>Team Resources</h1>
+      <p>Enter the password to view protected team resources.</p>
       ${error}
       <form method="post" action="${checklistPath}">
         <label for="password">Password</label>

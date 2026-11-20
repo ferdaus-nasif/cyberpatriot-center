@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Windows Server Checklist - CyberPatriot Center</title>
+  <meta name="description" content="Role-aware Windows Server hardening checklist for CyberPatriot.">
+  <meta name="theme-color" content="#000000">
+  <link rel="icon" type="image/png" href="../images/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <script src="../site.js" defer></script>
+</head>
+<body>
+  <header>
+    <a class="brand" href="../index.html"><img src="../images/logo.png" alt="" width="28" height="28">CyberPatriot Center</a>
+    <nav id="nav" aria-label="Main"><ul><li><a href="../index.html">Home</a></li><li><a href="team.html">The Team</a></li><li><a href="peshrow.html">Peshrow's Page</a></li><li><a href="scores.html">Scores</a></li><li><a href="resources.html" aria-current="page">Resources</a></li></ul></nav>
+    <button class="menu" id="navToggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="nav"><i></i><i></i></button>
+  </header>
+  <main>
+    <section class="wrap page-head"><h1>Windows Server Checklist</h1><p>Role-aware Server hardening. Tap an item to check it off; progress is saved on this device.</p></section>
+    <section class="wrap sec">
+      <p class="warn"><strong>Competition images have specific scoring requirements. Read the README, forensics questions, and role description first. Do not remove required roles, accounts, services, shares, or scoring tools.</strong></p>
+      <div class="cl-bar" role="status"><span id="cl-txt">0 of 0 done</span><div class="track"><i id="cl-fill"></i></div><button class="btn ghost sm" id="cl-reset" type="button">Reset</button></div>
+      <ol class="cl">
+        <li><strong>Establish a safe baseline</strong><ol class="checklist-sublist">
+          <li>Confirm server name, version, time, network settings, and whether it is a domain controller or member server.</li>
+          <li>Read all competition instructions and record required users, software, roles, ports, and services.</li>
+          <li>Save a VM snapshot or other approved recovery point before high-impact changes.</li>
+          <li>Prioritize clear scoring requirements and critical exposures; make one change at a time and verify it.</li>
+        </ol></li>
+        <li><strong>Updates and protection</strong><ol class="checklist-sublist">
+          <li>Install supported Windows and security updates; restart as needed and verify update status.</li>
+          <li>Check Microsoft Defender status, signatures, real-time protection, and Protection History.</li>
+          <li>Review exclusions and quarantine; remove unauthorized exclusions without deleting required competition files.</li>
+          <li>Run a scan early enough to investigate findings and confirm critical services still work.</li>
+        </ol></li>
+        <li><strong>Accounts and privileged groups</strong><ol class="checklist-sublist">
+          <li>Compare local and domain users with the README; investigate unknown, disabled, and stale accounts.</li>
+          <li>Disable unauthorized accounts and Guest; handle built-in Administrator only as scoring rules permit.</li>
+          <li>Remove unapproved users from local Administrators, Domain Admins, and other privileged groups.</li>
+          <li>Do not remove service accounts, the scoring account, or required administrators without confirming their purpose.</li>
+          <li>Use unique strong passwords; change known or weak passwords as directed and avoid locking out required accounts.</li>
+        </ol></li>
+        <li><strong>Password, lockout, and audit policy</strong><ol class="checklist-sublist">
+          <li>Review effective domain/local policy and compare it with the scoring requirements before editing.</li>
+          <li>Set password length, history, age, complexity, and lockout thresholds to the required values.</li>
+          <li>Enable only the required advanced audit categories; avoid conflicting basic and advanced policy settings.</li>
+          <li>Use Group Policy Results to confirm which policy actually applies after changes.</li>
+        </ol></li>
+        <li><strong>Roles, features, and services</strong><ol class="checklist-sublist">
+          <li>Inventory installed roles and features; preserve required AD DS, DNS, DHCP, IIS, file, print, or other roles.</li>
+          <li>Review services and startup type; disable only services confirmed unnecessary for this server role.</li>
+          <li>Remove unauthorized software and features; preserve the competition scoring engine and required tools.</li>
+          <li>Disable legacy or unnecessary components such as SMB 1.0 or Telnet only after confirming no requirement depends on them.</li>
+        </ol></li>
+        <li><strong>Firewall and network exposure</strong><ol class="checklist-sublist">
+          <li>Keep Windows Firewall enabled for every profile; inspect effective inbound and outbound rules.</li>
+          <li>Remove unauthorized broad allow rules and restrict legitimate management access to trusted networks.</li>
+          <li>Allow only role-required ports and protocols; do not blindly block DNS, domain, web, file, or scoring traffic.</li>
+          <li>Review listening ports and correlate each listener with a known service and approved role.</li>
+        </ol></li>
+        <li><strong>Remote administration</strong><ol class="checklist-sublist">
+          <li>Restrict RDP to approved users and trusted networks; enable Network Level Authentication when supported.</li>
+          <li>Keep RDP disabled only if it is not required; verify an alternate management path before changing remote settings.</li>
+          <li>Restrict WinRM and PowerShell remoting to authorized administrators and networks; disable unused endpoints.</li>
+          <li>Review remote logons and recent authentication events for unauthorized access.</li>
+        </ol></li>
+        <li><strong>Active Directory and domain controllers</strong><ol class="checklist-sublist">
+          <li>Inspect privileged groups, user accounts, service accounts, and recent account changes against competition requirements.</li>
+          <li>Review Group Policy links, scope, and startup scripts; remove only clearly unauthorized policies or scripts.</li>
+          <li>Check domain controller health, DNS configuration, and replication status before making directory-wide changes.</li>
+          <li>Do not disable AD DS, DNS, Kerberos, LDAP, or domain security features on a required domain controller.</li>
+        </ol></li>
+        <li><strong>SMB, shares, and file permissions</strong><ol class="checklist-sublist">
+          <li>Inventory shares and their permissions; remove unauthorized shares and anonymous/guest access.</li>
+          <li>Check NTFS permissions for sensitive folders and ensure only authorized users have write or administrative access.</li>
+          <li>Keep SMB 2/3 for required file and domain functions; disable SMB 1 only when not required.</li>
+          <li>Review SMB signing and encryption settings against the server role and competition requirements.</li>
+        </ol></li>
+        <li><strong>IIS and application roles</strong><ol class="checklist-sublist">
+          <li>If IIS is required, review sites, bindings, application pools, modules, and virtual directories.</li>
+          <li>Remove default/sample content and unauthorized sites; preserve required competition content.</li>
+          <li>Use least-privilege application pool identities and restrict write permissions to necessary paths.</li>
+          <li>Keep web services stopped only when the image does not require them; verify the site after changes.</li>
+        </ol></li>
+        <li><strong>Persistence, logs, and final verification</strong><ol class="checklist-sublist">
+          <li>Review scheduled tasks, startup entries, services, PowerShell profiles, and logon scripts for unauthorized changes.</li>
+          <li>Inspect Event Viewer security, system, Defender, and role-specific logs; preserve evidence of suspicious activity.</li>
+          <li>Check hosts file, installed applications, local security settings, and file permissions for unauthorized modifications.</li>
+          <li>Recheck scoring requirements, firewall profiles, required services, and connectivity after changes.</li>
+          <li>Record unresolved findings and avoid last-minute changes that could disrupt a required server role.</li>
+        </ol></li>
+        <li><strong>Quick commands</strong><ol class="checklist-sublist">
+          <li>Get-ComputerInfo</li><li>Get-WindowsFeature</li><li>Get-LocalUser</li><li>Get-LocalGroupMember Administrators</li>
+          <li>Get-Service</li><li>Get-NetFirewallProfile</li><li>Get-MpComputerStatus</li><li>Get-SmbServerConfiguration</li>
+          <li>Get-SmbShare</li><li>Get-ScheduledTask</li><li>gpresult /r</li><li>auditpol /get /category:*</li><li>netstat -ano</li>
+        </ol></li>
+      </ol>
+    </section>
+  </main>
+  <footer><div class="wrap"><span>CyberPatriot Center</span><span>Not affiliated with CyberPatriot, AFA, or Independence High School.</span></div></footer>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Debian Checklist - CyberPatriot Center</title>
+  <meta name="description" content="Debian hardening checklist for CyberPatriot.">
+  <meta name="theme-color" content="#000000">
+  <link rel="icon" type="image/png" href="../images/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <script src="../site.js" defer></script>
+</head>
+<body>
+  <header>
+    <a class="brand" href="../index.html"><img src="../images/logo.png" alt="" width="28" height="28">CyberPatriot Center</a>
+    <nav id="nav" aria-label="Main"><ul><li><a href="../index.html">Home</a></li><li><a href="team.html">The Team</a></li><li><a href="peshrow.html">Peshrow's Page</a></li><li><a href="scores.html">Scores</a></li><li><a href="resources.html" aria-current="page">Resources</a></li></ul></nav>
+    <button class="menu" id="navToggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="nav"><i></i><i></i></button>
+  </header>
+  <main>
+    <section class="wrap page-head"><h1>Debian Checklist</h1><p>Debian-focused system hardening. Tap an item to check it off; progress is saved on this device.</p></section>
+    <section class="wrap sec">
+      <p class="warn"><strong>Read the README and forensics questions first. Preserve required users, packages, services, ports, and scoring tools. Keep a working console or recovery path before changing SSH or firewall settings.</strong></p>
+      <div class="cl-bar" role="status"><span id="cl-txt">0 of 0 done</span><div class="track"><i id="cl-fill"></i></div><button class="btn ghost sm" id="cl-reset" type="button">Reset</button></div>
+      <ol class="cl">
+        <li><strong>Baseline and investigation</strong><ol class="checklist-sublist">
+          <li>Confirm Debian release, hostname, network configuration, current user, and competition role.</li>
+          <li>Read required tasks, permitted-user lists, prohibited software, and required services before changes.</li>
+          <li>Record current state and create an approved snapshot or backup if available.</li>
+          <li>Inspect suspicious processes and persistence before removing files; preserve evidence when appropriate.</li>
+        </ol></li>
+        <li><strong>Updates and package sources</strong><ol class="checklist-sublist">
+          <li>Review /etc/apt/sources.list and files under /etc/apt/sources.list.d for approved Debian repositories.</li>
+          <li>Remove unauthorized repositories and signing keys; do not add untrusted package sources.</li>
+          <li>Refresh package metadata and review available security updates.</li>
+          <li>Simulate a full upgrade before applying it; review removals and preserve required roles and scoring software.</li>
+          <li>Check for unsupported releases or packages and follow competition instructions rather than changing release repositories.</li>
+        </ol></li>
+        <li><strong>Users, groups, and sudo</strong><ol class="checklist-sublist">
+          <li>Compare local accounts and groups with the README; investigate unexpected accounts and UID 0 users.</li>
+          <li>Disable or remove only unauthorized accounts; do not remove required users or service accounts.</li>
+          <li>Review sudo group membership and /etc/sudoers.d; keep administrator access limited to approved users.</li>
+          <li>Check password hashes and account status; set strong passwords for required interactive users.</li>
+          <li>Review password quality, aging, and lockout controls; avoid edits that could lock out required competition accounts.</li>
+        </ol></li>
+        <li><strong>SSH and remote access</strong><ol class="checklist-sublist">
+          <li>Inspect effective sshd configuration, including included files, before editing.</li>
+          <li>Disable direct root SSH login when not required; use authorized individual accounts and least privilege.</li>
+          <li>Review authorized_keys for every user and remove only keys confirmed unauthorized.</li>
+          <li>Use key-based access where required; if password login is needed for competition, retain it as instructed.</li>
+          <li>Validate configuration before reload and keep a local console session open until remote access is verified.</li>
+        </ol></li>
+        <li><strong>Firewall and network</strong><ol class="checklist-sublist">
+          <li>Inspect listening sockets and map them to expected services and the README.</li>
+          <li>Use the firewall already supported by the image; inspect existing rules before adding or removing rules.</li>
+          <li>Allow required management and competition traffic before enabling or tightening a firewall remotely.</li>
+          <li>Remove unauthorized listeners and broad rules; do not block required DNS, web, SSH, or scoring traffic.</li>
+          <li>Review network interfaces, routes, DNS, and /etc/hosts for unauthorized changes.</li>
+        </ol></li>
+        <li><strong>Services and systemd</strong><ol class="checklist-sublist">
+          <li>Inventory enabled services, active processes, sockets, and systemd timers.</li>
+          <li>Confirm each server role (such as web, DNS, file sharing, or SSH) before disabling its services.</li>
+          <li>Disable only clearly unnecessary or unauthorized services; recheck dependent services after changes.</li>
+          <li>Review cron jobs, systemd units, and service overrides for unexpected commands or modified executables.</li>
+        </ol></li>
+        <li><strong>Permissions and system integrity</strong><ol class="checklist-sublist">
+          <li>Verify ownership and permissions of /etc/passwd, /etc/shadow, /etc/group, and /etc/sudoers.</li>
+          <li>Review unauthorized SUID/SGID programs and world-writable locations; investigate before changing package-owned files.</li>
+          <li>Check /tmp, /var/tmp, home directories, SSH directories, and web roots for unsafe permissions or unexpected files.</li>
+          <li>Review kernel modules and boot configuration only when relevant; do not apply hardening settings that prevent boot.</li>
+        </ol></li>
+        <li><strong>AppArmor, logging, and time</strong><ol class="checklist-sublist">
+          <li>Check AppArmor status and profiles; keep enforcement enabled for required profiles where supported.</li>
+          <li>Review authentication, system, package, and service logs for suspicious logins or changes.</li>
+          <li>Ensure logging is active and logs are not world-writable or unexpectedly cleared.</li>
+          <li>Check system time and time synchronization; preserve any required competition time settings.</li>
+        </ol></li>
+        <li><strong>Applications and persistence</strong><ol class="checklist-sublist">
+          <li>Compare installed packages with the permitted software list; remove unauthorized programs carefully.</li>
+          <li>Inspect shell startup files, profile scripts, cron locations, SSH keys, and systemd units.</li>
+          <li>Review browser and remote-access software if installed; remove unauthorized extensions or tools.</li>
+          <li>Check the hosts file, executable paths, and package integrity for unauthorized modifications.</li>
+        </ol></li>
+        <li><strong>Final verification</strong><ol class="checklist-sublist">
+          <li>Recheck required users, sudo access, network connectivity, listening services, and firewall rules.</li>
+          <li>Confirm SSH and any required application role still work after configuration changes.</li>
+          <li>Review remaining scoring tasks and rerun checks after updates or restarts.</li>
+          <li>Document unresolved findings and avoid broad recursive permission changes or unreviewed cleanup scripts.</li>
+        </ol></li>
+        <li><strong>Quick commands</strong><ol class="checklist-sublist">
+          <li>cat /etc/os-release</li><li>hostnamectl</li><li>id</li><li>getent passwd</li><li>getent group sudo</li>
+          <li>sudo -l</li><li>apt list --upgradable</li><li>sudo apt -s full-upgrade</li><li>systemctl --type=service --state=running</li>
+          <li>systemctl list-timers</li><li>ss -tulpn</li><li>sudo nft list ruleset</li><li>sudo ufw status verbose</li>
+          <li>sudo aa-status</li><li>sudo journalctl -p warning -b</li><li>sudo sshd -t</li>
+        </ol></li>
+      </ol>
+    </section>
+  </main>
+  <footer><div class="wrap"><span>CyberPatriot Center</span><span>Not affiliated with CyberPatriot, AFA, or Independence High School.</span></div></footer>
+</body>
+</html>
